@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="_device_class_phone" />
+        <device id="_device_class_tablet" />
+        <device id="_android_virtual_device_id_Pixel_9_API_35" />
+        <device id="_device_class_desktop" />
+        <device id="4.7in WXGA" />
+        <device id="_android_virtual_device_id_Pixel_7_API_33" />
+        <device id="4in WVGA (Nexus S)" />
+        <device id="_android_virtual_device_id_Pixel_2_-_Android_14" />
+      </config>
+    </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_new_room.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_generate_bill.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_generated_bill_history.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login_selection.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_otp_login.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_room_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tenant.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tenant_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tutorial.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_bil_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_bill_history.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_electricity_bill_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_meter_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_note_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_partial_bill_history.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_rent_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_room_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_slider.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_tenant_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_recycler_all_bottom_actions.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_recycler_notification.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/advance_bill_history_search_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/app_review_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/bill_confirmation_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/custom_search_panel_name.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/delete_confirmation_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_layout_bill_mark_as_paid.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_layout_notify_user.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_layout_partial_payment_status.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_popup_app_update.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/drawer_item_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/drawer_menu.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/exit_app_confirmation_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/extended_search_panel_name.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/extended_search_panel_with_filter_items.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/generated_bill_history_search_panel.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/language_selector_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_generated_bill_this_month.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_no_bill_history_for_this_month.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_send_otp.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_setup_password.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_verify_otp.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/loading_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/logout_confirmation_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/no_data_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/no_notes_layout.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/simple_spinner_dropdown_item.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/spinner_drop.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/welcome_about_app.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/welcome_add_tenant_first.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/toolbar_menu.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/xml/remote_config_defaults.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+    </layouts>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b2775a39-56bc-4fcb-9460-ef43cd0bd1cd" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/sakhawat/.android/avd/Pixel_9_Pro_XL_API_35.avd)]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Bari vara" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Data Class" />
+        <option value="resourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$USER_HOME$/Downloads/bari-vara.jks" />
+    <option name="KEY_ALIAS" value="barivara" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="develop" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;shakiz&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/shakiz/Barivara.git&quot;,
+    &quot;accountId&quot;: &quot;91120cb0-2667-4f41-a74d-2042701569cb&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2qa88Ob24XWEDb11BCldo6nJuxn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "ApkExportedModule": "Bari_vara.app",
+    "BundleExportedModule": "Bari_vara.app",
+    "DEBUGGABLE_DEVICE": "emulator-5554",
+    "DEBUGGABLE_PROCESS": "com.shakil.barivara",
+    "DEBUGGER_ID": "Auto",
+    "ExportApk.ApkPathForBari_vara.app": "/Users/sakhawat/Shakil/Personal Projects/Barivara/app",
+    "ExportBundle.BundlePathForBari_vara.app": "/Users/sakhawat/Shakil/Personal Projects/Barivara/app",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHOW_ALL_PROCESSES": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/sakhawat/Shakil/Personal Projects/hotelevergreenkuakata",
+    "project.structure.last.edited": "Build Variants",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.scopes",
+    "show.migrate.to.gradle.popup": "false"
+  },
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
+    ]
+  }
+}]]></component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-nodpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-nodpi" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.shakil.barivara.presentation.generatebill.bottomsheet" />
+      <recent name="com.shakil.barivara.presentation.tutorial" />
+      <recent name="com.shakil.barivara.presentation.adapter" />
+      <recent name="com.shakil.barivara.data.model.generatebill" />
+      <recent name="com.shakil.barivara.presentation.generatebill" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Hotel_Evergreen_Kuakata.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Bari_vara" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b2775a39-56bc-4fcb-9460-ef43cd0bd1cd" name="Changes" comment="" />
+      <created>1734889165590</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734889165590</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Release 1.4.8">
+      <option name="closed" value="true" />
+      <created>1739185379658</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1739185379658</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Update whatsapp navigation">
+      <option name="closed" value="true" />
+      <created>1739208827942</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1739208827942</updated>
+    </task>
+    <task id="LOCAL-00066" summary="feature(language)- Add change language feature">
+      <option name="closed" value="true" />
+      <created>1739426650235</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1739426650235</updated>
+    </task>
+    <task id="LOCAL-00067" summary="feature(language)- Update language manager with proper callbacks and pre load the selected lan">
+      <option name="closed" value="true" />
+      <created>1739428142276</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1739428142276</updated>
+    </task>
+    <task id="LOCAL-00068" summary="feature(language)- Remove unused layout and activity">
+      <option name="closed" value="true" />
+      <created>1739428303861</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1739428303861</updated>
+    </task>
+    <task id="LOCAL-00069" summary="feature(language)- Update translated texts for en/bn">
+      <option name="closed" value="true" />
+      <created>1739432418365</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1739432418365</updated>
+    </task>
+    <task id="LOCAL-00070" summary="feature(pull-to-refresh)- Added pull to refresh">
+      <option name="closed" value="true" />
+      <created>1739439045803</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1739439045804</updated>
+    </task>
+    <task id="LOCAL-00071" summary="feature(mark-as-paid)- Update mark as paid UI and bottom sheet implementation">
+      <option name="closed" value="true" />
+      <created>1739610194975</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1739610194975</updated>
+    </task>
+    <task id="LOCAL-00072" summary="feature(mark-as-paid)- Add remarks field in api for rent status update">
+      <option name="closed" value="true" />
+      <created>1739625047515</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1739625047515</updated>
+    </task>
+    <task id="LOCAL-00073" summary="feature(minor-ui-fixes)- Fix UI issues in list and margins">
+      <option name="closed" value="true" />
+      <created>1739626149405</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1739626149405</updated>
+    </task>
+    <task id="LOCAL-00074" summary="feature(minor-ui-fixes)- Update home title text and add language change option in home">
+      <option name="closed" value="true" />
+      <created>1739685672114</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1739685672114</updated>
+    </task>
+    <task id="LOCAL-00075" summary="feature(minor-ui-fixes)- Update tenant type wrong selection issue">
+      <option name="closed" value="true" />
+      <created>1739690753327</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1739690753327</updated>
+    </task>
+    <task id="LOCAL-00076" summary="feature(minor-ui-fixes)- Set visibility of tenant id based on room status">
+      <option name="closed" value="true" />
+      <created>1739691264713</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1739691264713</updated>
+    </task>
+    <task id="LOCAL-00077" summary="feature(minor-ui-fixes)- Fixed padding issues for submit feedback button">
+      <option name="closed" value="true" />
+      <created>1739691774859</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1739691774859</updated>
+    </task>
+    <task id="LOCAL-00078" summary="feature(payment-received-date)- Add payment received date implementation in bill history">
+      <option name="closed" value="true" />
+      <created>1739899350850</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1739899350850</updated>
+    </task>
+    <task id="LOCAL-00079" summary="feature(payment-received-date)- Fix bill list strings">
+      <option name="closed" value="true" />
+      <created>1739899579734</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1739899579734</updated>
+    </task>
+    <task id="LOCAL-00080" summary="feature(bill-history-filter)- Add month and year filter for default view">
+      <option name="closed" value="true" />
+      <created>1739949889465</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1739949889465</updated>
+    </task>
+    <task id="LOCAL-00081" summary="feature(bill-history-filter)- Add filter option with year, month, tenant name and rent status">
+      <option name="closed" value="true" />
+      <created>1739983854404</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1739983854404</updated>
+    </task>
+    <task id="LOCAL-00082" summary="bugFix(bill-history-filter)- Fix rent status language change issue">
+      <option name="closed" value="true" />
+      <created>1740036618956</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1740036618957</updated>
+    </task>
+    <task id="LOCAL-00083" summary="bugFix(translation-issues)- Fix bn translations and mark as paid bottom sheet no data showing">
+      <option name="closed" value="true" />
+      <created>1740989993972</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1740989993973</updated>
+    </task>
+    <task id="LOCAL-00084" summary="bugFix(translation-issues)- Fix home menu overlapping issues for bn translation">
+      <option name="closed" value="true" />
+      <created>1740991516148</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1740991516148</updated>
+    </task>
+    <task id="LOCAL-00085" summary="bugFix(translation-issues)- Update home translation for menu overlapping">
+      <option name="closed" value="true" />
+      <created>1740997622474</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1740997622475</updated>
+    </task>
+    <task id="LOCAL-00086" summary="feature(video-tutorial)- Add video tutorial menu and resources">
+      <option name="closed" value="true" />
+      <created>1740997876034</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1740997876034</updated>
+    </task>
+    <task id="LOCAL-00087" summary="feature(video-tutorial)- Add video tutorial using youTube player">
+      <option name="closed" value="true" />
+      <created>1741021368766</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1741021368767</updated>
+    </task>
+    <task id="LOCAL-00088" summary="feature(video-tutorial)- Add video tutorial back press navigation">
+      <option name="closed" value="true" />
+      <created>1741057534434</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1741057534434</updated>
+    </task>
+    <task id="LOCAL-00089" summary="feature(video-tutorial)- Update video tutorial id">
+      <option name="closed" value="true" />
+      <created>1741077640604</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1741077640604</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Release 1.4.9">
+      <option name="closed" value="true" />
+      <created>1741077712558</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1741077712558</updated>
+    </task>
+    <task id="LOCAL-00091" summary="feature(notify-user)- Add notify user functionalities with design">
+      <option name="closed" value="true" />
+      <created>1742407672816</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1742407672817</updated>
+    </task>
+    <task id="LOCAL-00092" summary="feature(header)- Add new header on each request">
+      <option name="closed" value="true" />
+      <created>1742547020324</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1742547020324</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Release 1.4.10">
+      <option name="closed" value="true" />
+      <created>1742548066012</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1742548066012</updated>
+    </task>
+    <task id="LOCAL-00094" summary="feature(notify-user): Add open whats app and message with prefilled message impl">
+      <option name="closed" value="true" />
+      <created>1742581681602</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1742581681602</updated>
+    </task>
+    <task id="LOCAL-00095" summary="feature(notify-user): Add open whats app and message with prefilled message impl in bill history">
+      <option name="closed" value="true" />
+      <created>1742581934093</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1742581934093</updated>
+    </task>
+    <task id="LOCAL-00096" summary="feature(default-bn-lan): Make bn as app default language">
+      <option name="closed" value="true" />
+      <created>1742822031583</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1742822031583</updated>
+    </task>
+    <task id="LOCAL-00097" summary="feature(remarks): Show remarks data in bill history if available">
+      <option name="closed" value="true" />
+      <created>1743067556268</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1743067556268</updated>
+    </task>
+    <task id="LOCAL-00098" summary="feature(remarks): Add remarks for notify user">
+      <option name="closed" value="true" />
+      <created>1743670092691</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1743670092691</updated>
+    </task>
+    <task id="LOCAL-00099" summary="feature(app-review): Add app review dialog">
+      <option name="closed" value="true" />
+      <created>1743747890578</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1743747890579</updated>
+    </task>
+    <task id="LOCAL-00100" summary="feature(app-review): Add logics to show review dialog for once in a week">
+      <option name="closed" value="true" />
+      <created>1743748301346</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1743748301346</updated>
+    </task>
+    <task id="LOCAL-00101" summary="feature(app-review): Update bn text">
+      <option name="closed" value="true" />
+      <created>1743748559231</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1743748559231</updated>
+    </task>
+    <task id="LOCAL-00102" summary="feature(notify-user): Fix month and year details">
+      <option name="closed" value="true" />
+      <created>1744047857523</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1744047857523</updated>
+    </task>
+    <task id="LOCAL-00103" summary="feature(notify-user): Fix translation and message format">
+      <option name="closed" value="true" />
+      <created>1744126728467</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1744126728467</updated>
+    </task>
+    <task id="LOCAL-00104" summary="feature(notify-user): Add send via message and whatsapp button analytic">
+      <option name="closed" value="true" />
+      <created>1744126892141</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1744126892141</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Release 1.4.11">
+      <option name="closed" value="true" />
+      <created>1744127133214</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1744127133214</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Fix whatsapp no redirection issue">
+      <option name="closed" value="true" />
+      <created>1744130349668</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1744130349668</updated>
+    </task>
+    <task id="LOCAL-00107" summary="feature(partial-rent): Add partial amount enter UI adjustment in generate bill">
+      <option name="closed" value="true" />
+      <created>1744541194727</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1744541194728</updated>
+    </task>
+    <task id="LOCAL-00108" summary="feature(partial-rent): Add partial amount history in bill history list item layout">
+      <option name="closed" value="true" />
+      <created>1744542310904</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1744542310904</updated>
+    </task>
+    <task id="LOCAL-00109" summary="feature(partial-rent): Add partial rent history bottom sheet">
+      <option name="closed" value="true" />
+      <created>1744543832374</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1744543832374</updated>
+    </task>
+    <task id="LOCAL-00110" summary="feature(partial-rent): Add partial rent history sheet and list UI">
+      <option name="closed" value="true" />
+      <created>1744543857139</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1744543857139</updated>
+    </task>
+    <task id="LOCAL-00111" summary="feature(partial-rent): Show partial rent history UI and update analytics">
+      <option name="closed" value="true" />
+      <created>1744543878525</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1744543878525</updated>
+    </task>
+    <task id="LOCAL-00112" summary="feature(partial-rent): Add partial payment history adapter">
+      <option name="closed" value="true" />
+      <created>1744606519388</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1744606519389</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="feature(video-tutorial)- Add video tutorial back press navigation" />
+    <MESSAGE value="feature(video-tutorial)- Update video tutorial id" />
+    <MESSAGE value="Release 1.4.9" />
+    <MESSAGE value="feature(notify-user)- Add notify user functionalities with design" />
+    <MESSAGE value="feature(header)- Add new header on each request" />
+    <MESSAGE value="Release 1.4.10" />
+    <MESSAGE value="feature(notify-user): Add open whats app and message with prefilled message impl" />
+    <MESSAGE value="feature(notify-user): Add open whats app and message with prefilled message impl in bill history" />
+    <MESSAGE value="feature(default-bn-lan): Make bn as app default language" />
+    <MESSAGE value="feature(remarks): Show remarks data in bill history if available" />
+    <MESSAGE value="feature(remarks): Add remarks for notify user" />
+    <MESSAGE value="feature(app-review): Add app review dialog" />
+    <MESSAGE value="feature(app-review): Add logics to show review dialog for once in a week" />
+    <MESSAGE value="feature(app-review): Update bn text" />
+    <MESSAGE value="feature(notify-user): Fix month and year details" />
+    <MESSAGE value="feature(notify-user): Fix translation and message format" />
+    <MESSAGE value="feature(notify-user): Add send via message and whatsapp button analytic" />
+    <MESSAGE value="Release 1.4.11" />
+    <MESSAGE value="Fix whatsapp no redirection issue" />
+    <MESSAGE value="feature(partial-rent): Add partial amount enter UI adjustment in generate bill" />
+    <MESSAGE value="feature(partial-rent): Add partial amount history in bill history list item layout" />
+    <MESSAGE value="feature(partial-rent): Add partial rent history bottom sheet" />
+    <MESSAGE value="feature(partial-rent): Add partial rent history sheet and list UI" />
+    <MESSAGE value="feature(partial-rent): Show partial rent history UI and update analytics" />
+    <MESSAGE value="feature(partial-rent): Add partial payment history adapter" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature(partial-rent): Add partial payment history adapter" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/generatebill/GenerateBillViewModel.kt</url>
+          <line>108</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

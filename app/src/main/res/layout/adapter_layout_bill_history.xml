@@ -1,0 +1,204 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/roomName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|start"
+                android:textColor="@color/md_black_1000"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/ic_home"
+                app:drawableTint="@color/md_grey_800"
+                tools:text="Room: A-101" />
+
+            <TextView
+                android:id="@+id/billStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|start"
+                android:textColor="@color/md_black_1000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:drawablePadding="4dp"
+                app:drawableStartCompat="@drawable/ic_rent_sign"
+                app:drawableTint="@color/md_grey_800"
+                tools:text="Occupied" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tenantName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:textColor="@color/md_black_1000"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_person"
+            app:drawableTint="@color/md_grey_800"
+            tools:text="John Doe" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/totalBill"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|start"
+                android:textColor="@color/md_black_1000"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/ic_currency_bdt"
+                app:drawableTint="@color/md_grey_800"
+                tools:text="1200" />
+
+            <TextView
+                android:id="@+id/monthAndYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|start"
+                android:textColor="@color/md_black_1000"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/ic_date_range"
+                app:drawableTint="@color/md_grey_800"
+                tools:text="10 Jan 2025" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/paymentReceivedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_done"
+            app:drawableTint="@color/md_grey_800"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/md_black_1000"
+            android:text="@string/payment_received_on_x"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/partialPaymentReceived"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_info_circle"
+            app:drawableTint="@color/md_red_500"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/md_red_500"
+            android:text="@string/partial_payment_received"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/partialPaymentRemaining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_currency_bdt"
+            app:drawableTint="@color/md_red_500"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/md_red_500"
+            android:text="@string/remaining_amount_x"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_remarks"
+            app:drawableTint="@color/md_grey_800"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/md_black_1000"
+            android:text="@string/remarks_x"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:id="@+id/actionButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center|end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/notifyUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/rectangle_green_dark"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/md_white_1000"
+                android:text="@string/notify_user"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/markAsPaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/rectangle_white_grey_border"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/md_black_1000"
+                android:text="@string/mark_as_paid"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnPartialPaymentStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            android:background="@drawable/rectangle_green_dark"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="12sp"
+            android:textColor="@color/md_white_1000"
+            android:text="@string/partial_payment_status"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/md_white_1000"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvDateFilterHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvMonthHeading"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/select_year"
+            android:textColor="@color/md_grey_900"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/filterYearSpinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/edit_text_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/monthId"
+            app:layout_constraintTop_toBottomOf="@id/tvDateFilterHeading" />
+
+        <TextView
+            android:id="@+id/tvMonthHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/select_month_2"
+            android:textColor="@color/md_grey_900"
+            app:layout_constraintStart_toEndOf="@id/tvDateFilterHeading"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/monthId"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edit_text_back"
+            android:tag="@string/select_month"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/filterYearSpinner"
+            app:layout_constraintTop_toBottomOf="@id/tvMonthHeading" />
+
+        <Button
+            android:id="@+id/btnClearFilter"
+            style="@style/AppTheme.Button.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/filterYearSpinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnApplyFilter"
+            android:text="@string/clear"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnApplyFilter"
+            style="@style/AppTheme.Button.Primary"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toBottomOf="@id/filterYearSpinner"
+            app:layout_constraintStart_toEndOf="@id/btnClearFilter"
+            app:layout_constraintEnd_toStartOf="@id/ivAdvanceFilter"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@string/apply_filter"
+            android:textAllCaps="false" />
+
+        <ImageView
+            android:id="@+id/ivAdvanceFilter"
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/banner_description"
+            android:padding="8dp"
+            android:src="@drawable/ic_filter"
+            android:background="@drawable/rectangle_border_darker_green"
+            app:layout_constraintBottom_toBottomOf="@+id/btnApplyFilter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnApplyFilter"
+            app:layout_constraintTop_toTopOf="@+id/btnApplyFilter" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

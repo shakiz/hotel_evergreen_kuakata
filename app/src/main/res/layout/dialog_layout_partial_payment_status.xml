@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="@color/window_background"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/partial_rent_management"
+            android:textColor="@color/md_grey_800"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/partialRentHistoryList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/heading"
+            tools:itemCount="3"
+            tools:listitem="@layout/adapter_layout_partial_bill_history"/>
+
+        <TextView
+            android:id="@+id/partialPaymentHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/partialRentHistoryList"
+            android:layout_marginTop="12dp"
+            android:text="@string/remaining_amount"
+            android:textColor="@color/md_grey_900"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/partialRentAmount"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edit_text_back"
+            app:drawableStartCompat="@drawable/ic_currency_bdt"
+            android:hint="@string/partial_rent_hint"
+            android:layout_below="@id/partialPaymentHeading"
+            android:textStyle="bold"
+            android:inputType="none"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/x_d"
+            android:textColor="@color/md_red_500"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/remarksHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/partialRentAmount"
+            android:layout_marginTop="12dp"
+            android:text="@string/remarks"
+            android:textColor="@color/md_grey_900"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/remarks"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@id/remarksHeading"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edit_text_back"
+            android:ellipsize="end"
+            android:hint="@string/remarks_hint"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scrollHorizontally="true"
+            android:textColor="@color/md_grey_800"
+            android:textColorHint="@color/md_grey_700"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/markAsPaid"
+            style="@style/AppTheme.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@id/remarks"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:text="@string/mark_as_paid"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
