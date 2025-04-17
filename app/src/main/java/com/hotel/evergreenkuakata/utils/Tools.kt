@@ -47,7 +47,6 @@ import com.hotel.evergreenkuakata.utils.Constants.mUserEmail
 import com.hotel.evergreenkuakata.utils.Constants.mUserFullName
 import com.hotel.evergreenkuakata.utils.Constants.mUserId
 import com.hotel.evergreenkuakata.utils.Constants.mUserMobile
-import es.dmoral.toasty.Toasty
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Calendar
@@ -225,29 +224,6 @@ class Tools(private val context: Context) {
                 context.getString(R.string.your_device_does_not_support_this_feature),
                 Toast.LENGTH_LONG
             ).show()
-        }
-    }
-
-    fun launchAppByPackageName(appPackageName: String) {
-        try {
-            Toasty.info(
-                context,
-                context.getString(R.string.redirecting_to_play_store),
-                Toasty.LENGTH_LONG
-            ).show()
-            context.startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=$appPackageName")
-                )
-            )
-        } catch (anfe: ActivityNotFoundException) {
-            context.startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
-                )
-            )
         }
     }
 

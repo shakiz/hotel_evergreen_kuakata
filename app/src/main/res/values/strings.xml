@@ -40,7 +40,7 @@
 
     <string name="new_rent_details">New rent Details</string>
     <string name="new_meter_details">New Meter Details</string>
-    <string name="room_list">Room/Flat List</string>
+    <string name="room_list">Room List</string>
     <string name="meter_list">Meter List</string>
     <string name="present_month_unit">Present Month Unit</string>
     <string name="unit_price">Unit Price</string>
@@ -224,7 +224,7 @@
     <string name="rooms">Rooms</string>
     <string name="meters">Meters</string>
     <string name="tenant_information">Tenant Information</string>
-    <string name="room_information">Room/Flat Information</string>
+    <string name="room_information">Room Information</string>
     <string name="meter_information">Meter Information</string>
     <string name="demo_tenant_name">Rahim</string>
     <string name="no_internet_title">Please enable internet connection</string>
@@ -566,4 +566,7 @@
     <string name="remaining_amount">Remaining Amount</string>
     <string name="partial_rent_management">Partial Rent Management</string>
     <string name="paid_amount_x">Paid Amount: %d</string>
+    <string name="booking">Booking</string>
+    <string name="manage_booking">Manage Booking</string>
+    <string name="all_booking_information">All Booking Information</string>
 </resources>

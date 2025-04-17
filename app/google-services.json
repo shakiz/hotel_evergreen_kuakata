@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "284081715956",
+    "project_id": "hotelevergreenkuakata-50e50",
+    "storage_bucket": "hotelevergreenkuakata-50e50.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284081715956:android:676235ba5f93770674fca1",
+        "android_client_info": {
+          "package_name": "com.hotel.evergreenkuakata"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmUqW5P5OXfTV8ktXZN6efmBxxl03Ama4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

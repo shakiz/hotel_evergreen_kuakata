@@ -1,31 +1,24 @@
 package com.hotel.evergreenkuakata.presentation.onboard
 
 import android.Manifest
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import com.google.android.material.navigation.NavigationView
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.databinding.ActivityHomeBinding
 import com.hotel.evergreenkuakata.presentation.GenericDialog
 import com.hotel.evergreenkuakata.utils.Constants
-import com.hotel.evergreenkuakata.utils.Constants.WHATS_APP_BUSINESS_ACCOUNT_NO
 import com.hotel.evergreenkuakata.utils.LanguageCallBack
 import com.hotel.evergreenkuakata.utils.LocaleManager
 import com.hotel.evergreenkuakata.utils.PrefManager
@@ -33,12 +26,10 @@ import com.hotel.evergreenkuakata.utils.Tools
 import com.hotel.evergreenkuakata.utils.UX
 import com.hotel.evergreenkuakata.utils.UtilsForAll
 import dagger.hilt.android.AndroidEntryPoint
-import es.dmoral.toasty.Toasty
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity<ActivityHomeBinding>(),
-    NavigationView.OnNavigationItemSelectedListener, LanguageCallBack {
+class HomeActivity : BaseActivity<ActivityHomeBinding>(),LanguageCallBack {
     private lateinit var activityMainBinding: ActivityHomeBinding
 
     @Inject
@@ -87,16 +78,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_icon_menu)
-
-        val actionBarDrawerToggle = ActionBarDrawerToggle(
-            this,
-            activityMainBinding.myDrawerLayout,
-            activityMainBinding.toolBar,
-            R.string.app_name,
-            R.string.app_name
-        )
-        activityMainBinding.myDrawerLayout.addDrawerListener(actionBarDrawerToggle)
-        actionBarDrawerToggle.syncState()
     }
 
     private fun initListeners() {
@@ -115,8 +96,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),
     }
 
     private fun bindUIWithComponents() {
-        activityMainBinding.navigationView.setNavigationItemSelectedListener(this)
-
         if (Build.VERSION.SDK_INT > 32) {
             if (ContextCompat.checkSelfPermission(
                     this@HomeActivity,
@@ -186,32 +165,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_change_language -> {
-                LocaleManager.doPopUpForLanguage(
-                    this, this
-                )
-            }
-        }
-        activityMainBinding.myDrawerLayout.closeDrawer(GravityCompat.START)
-        return true
-    }
-
-    private fun openWhatsApp() {
-        val uri = Uri.parse("https://wa.me/${WHATS_APP_BUSINESS_ACCOUNT_NO.replace("+", "")}")
-
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-        intent.setPackage("com.whatsapp")
-
-        try {
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            Toasty.warning(this, getString(R.string.whatsapp_not_installed), Toast.LENGTH_SHORT)
-                .show()
-        }
     }
 
     override fun onLanguageChange(selectedLan: String) {

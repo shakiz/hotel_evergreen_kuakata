@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ভাড়া আদায় - Rent Collector</string>
+    <string name="app_name">Hotel Evergreen Kuakata</string>
 
     <!--Room start-->
     <string name="no_of_rooms">কক্ষ সংখ্যা</string>
@@ -565,4 +565,7 @@
     <string name="remaining_amount">Remaining Amount</string>
     <string name="partial_rent_management">Partial Rent Management</string>
     <string name="paid_amount_x">Paid Amount: %d</string>
+    <string name="booking">Booking</string>
+    <string name="manage_booking">Manage Booking</string>
+    <string name="all_booking_information">All Booking Information</string>
 </resources>
