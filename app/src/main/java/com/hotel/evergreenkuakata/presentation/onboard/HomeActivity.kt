@@ -18,6 +18,8 @@ import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.databinding.ActivityHomeBinding
 import com.hotel.evergreenkuakata.presentation.GenericDialog
+import com.hotel.evergreenkuakata.presentation.room.BookingActivity
+import com.hotel.evergreenkuakata.presentation.room.RoomActivity
 import com.hotel.evergreenkuakata.utils.Constants
 import com.hotel.evergreenkuakata.utils.LanguageCallBack
 import com.hotel.evergreenkuakata.utils.LocaleManager
@@ -89,6 +91,22 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),LanguageCallBack {
         )
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+        activityMainBinding.addRoom.setOnClickListener {
+            startActivity(Intent(this, RoomActivity::class.java))
+        }
+
+        activityMainBinding.roomList.setOnClickListener {
+            startActivity(Intent(this, RoomActivity::class.java))
+        }
+
+        activityMainBinding.addBooking.setOnClickListener {
+            startActivity(Intent(this, BookingActivity::class.java))
+        }
+
+        activityMainBinding.bookingList.setOnClickListener {
+            startActivity(Intent(this, BookingActivity::class.java))
+        }
     }
 
     private fun initObservers() {

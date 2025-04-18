@@ -17,7 +17,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     }
 
     override val layoutResourceId: Int
-        get() = R.layout.activity_room
+        get() = R.layout.activity_booking
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

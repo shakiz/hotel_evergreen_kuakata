@@ -568,4 +568,6 @@
     <string name="booking">Booking</string>
     <string name="manage_booking">Manage Booking</string>
     <string name="all_booking_information">All Booking Information</string>
+    <string name="manage_room">Manage Room</string>
+    <string name="add_booking">Add New Booking</string>
 </resources>

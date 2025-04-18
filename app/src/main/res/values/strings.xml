@@ -6,7 +6,7 @@
     <string name="total_earnings">Total Earnings</string>
     <string name="no_of_meters">No Of Meters</string>
     <string name="total_unit">Total Unit</string>
-    <string name="add_room">Add New Room/Flat</string>
+    <string name="add_room">Add New Room</string>
     <string name="add_meter">Add New Meter</string>
     <string name="room_hint">Enter Room/Flat Name</string>
     <string name="room_name">Room/Flat Name</string>
@@ -569,4 +569,6 @@
     <string name="booking">Booking</string>
     <string name="manage_booking">Manage Booking</string>
     <string name="all_booking_information">All Booking Information</string>
+    <string name="manage_room">Manage Room</string>
+    <string name="add_booking">Add New Booking</string>
 </resources>

@@ -39,66 +39,96 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/room_list"
+                android:text="@string/manage_room"
                 android:textColor="@color/md_green_900"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/room_list"
+                android:id="@+id/manageRoom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/rectangle_white">
+                android:layout_marginEnd="16dp">
 
-                <ImageView
-                    android:id="@+id/ivRoom"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:contentDescription="@string/banner_description"
-                    android:src="@drawable/ic_rooms"
+                <LinearLayout
+                    android:id="@+id/addRoom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rectangle_white"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/roomList"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvRoomListHeading"
+                    <ImageView
+                        android:id="@+id/ivRoom"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="@string/banner_description"
+                        android:src="@drawable/ic_circle_add"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingBottom="2dp"
+                        android:text="@string/add_room"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/roomList"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:scrollHorizontally="true"
-                    android:text="@string/room_information"
-                    android:textColor="@color/md_grey_800"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:background="@drawable/rectangle_white"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivRoom"
-                    app:layout_constraintTop_toTopOf="@id/ivRoom" />
+                    app:layout_constraintStart_toEndOf="@id/addRoom"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvAllTenantHeading"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingBottom="2dp"
-                    android:text="@string/all_rooms"
-                    android:textColor="@color/md_grey_800"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivRoom"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivRoom"
-                    app:layout_constraintTop_toBottomOf="@id/tvRoomListHeading" />
+                    <ImageView
+                        android:id="@+id/ivRoomList"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="@string/banner_description"
+                        android:src="@drawable/ic_rooms"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingBottom="2dp"
+                        android:text="@string/manage_room"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,70 +139,96 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/booking"
+                android:text="@string/manage_booking"
                 android:textColor="@color/md_green_900"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/booking_list"
+                android:id="@+id/manageBooking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/rectangle_white">
+                android:layout_marginEnd="16dp">
 
-                <ImageView
-                    android:id="@+id/ivBooking"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:contentDescription="@string/banner_description"
-                    android:src="@drawable/booking"
+                <LinearLayout
+                    android:id="@+id/addBooking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rectangle_white"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/bookingList"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvBookingListHeading"
+                    <ImageView
+                        android:id="@+id/ivBooking"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="@string/banner_description"
+                        android:src="@drawable/ic_circle_add"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingBottom="2dp"
+                        android:text="@string/add_booking"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bookingList"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:ellipsize="end"
-                    android:gravity="center|start"
-                    android:maxLines="2"
-                    android:scrollHorizontally="true"
-                    android:text="@string/manage_booking"
-                    android:textColor="@color/md_grey_800"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:background="@drawable/rectangle_white"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivBooking"
-                    app:layout_constraintTop_toTopOf="@id/ivBooking" />
+                    app:layout_constraintStart_toEndOf="@id/addBooking"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvAllBookingHeading"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:ellipsize="end"
-                    android:gravity="center|start"
-                    android:maxLines="1"
-                    android:paddingBottom="2dp"
-                    android:text="@string/all_booking_information"
-                    android:textColor="@color/md_grey_800"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@id/ivBooking"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivBooking"
-                    app:layout_constraintTop_toBottomOf="@id/tvBookingListHeading" />
+                    <ImageView
+                        android:id="@+id/ivBookingList"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="@string/banner_description"
+                        android:src="@drawable/booking"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingBottom="2dp"
+                        android:text="@string/manage_booking"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
