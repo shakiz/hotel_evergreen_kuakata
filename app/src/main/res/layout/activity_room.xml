@@ -1,59 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/window_background">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="48dp"
+            android:background="@color/md_white_1000"
+            app:elevation="0dp">
 
-            <ImageView
-                android:id="@+id/imgPreview"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="#CCC"
-                android:contentDescription="@string/banner_description"
-                android:scaleType="centerCrop" />
-
-            <Button
-                android:id="@+id/btnSelectImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Select Image" />
-
-            <EditText
-                android:id="@+id/etName"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tool_bar"
+                style="@style/TextAppearance.Widget.Event.Toolbar.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Room Name" />
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:title="@string/add_room"
+                app:titleTextColor="@color/md_grey_800">
 
-            <EditText
-                android:id="@+id/etPrice"
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/app_bar">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Price"
-                android:inputType="number" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <Spinner
-                android:id="@+id/spinnerRoomType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/md_white_1000"
+                    app:cardCornerRadius="16dp"
+                    app:cardUseCompatPadding="false"
+                    app:cardElevation="1dp">
 
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Save Room" />
+                    <ImageView
+                        android:id="@+id/imgPreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:contentDescription="@string/banner_description"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/placeholder"/>
 
-        </LinearLayout>
-    </ScrollView>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btnSelectImage"
+                    style="@style/AppTheme.Button.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:text="@string/select_image" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/edit_text_back"
+                    android:hint="@string/enter_room_name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textColorHint="@color/md_grey_500"
+                    android:textColor="@color/md_black_1000"/>
+
+                <EditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_text_back"
+                    android:hint="@string/enter_room_rent"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textColorHint="@color/md_grey_500"
+                    android:textColor="@color/md_black_1000"/>
+
+                <Spinner
+                    android:id="@+id/roomType"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_text_back"
+                    android:tag="@string/tenant_type" />
+
+                <Button
+                    android:id="@+id/btnSave"
+                    style="@style/AppTheme.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/save_room" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
 
 </layout>

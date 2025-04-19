@@ -571,4 +571,14 @@
     <string name="all_booking_information">All Booking Information</string>
     <string name="manage_room">Manage Room</string>
     <string name="add_booking">Add New Booking</string>
+    <string name="select_image">Select Image</string>
+    <string name="enter_room_name">Enter Room Name</string>
+    <string name="enter_room_rent">Enter Room Rent Amount</string>
+    <string name="save_room">Save Room</string>
+    <string name="book_room">Book Room</string>
+    <string name="enter_customer_name">Enter Customer Name</string>
+    <string name="enter_customer_nid">Enter Customer NID</string>
+    <string name="enter_customer_phone_no">Enter Customer Phone No</string>
+    <string name="select_booking_date">Select Booking Date</string>
+    <string name="new_booking">New Booking</string>
 </resources>

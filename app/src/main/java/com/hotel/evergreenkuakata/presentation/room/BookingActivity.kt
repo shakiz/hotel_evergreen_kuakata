@@ -22,10 +22,17 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        initListeners()
     }
 
     override fun setVariables(dataBinding: ActivityBookingBinding) {
         activityBinding = dataBinding
+    }
+
+    private fun initListeners(){
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        activityBinding.toolBar.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

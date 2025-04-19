@@ -24,10 +24,17 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        initListeners()
     }
 
     override fun setVariables(dataBinding: ActivityRoomBinding) {
         activityBinding = dataBinding
+    }
+
+    private fun initListeners(){
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        activityBinding.toolBar.setNavigationOnClickListener {
+            finish()
+        }
     }
 }
