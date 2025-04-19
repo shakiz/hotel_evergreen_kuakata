@@ -19,12 +19,22 @@
           <theme>@style/AppThemeNoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_booking_list.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
         <config>
           <theme>@style/AppThemeNoActionBar</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_room.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_room_list.xml">
         <config>
           <theme>@style/AppThemeNoActionBar</theme>
         </config>
@@ -40,6 +50,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_bill_history.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_booking_list.xml">
         <config>
           <theme>@style/AppThemeNoActionBar</theme>
         </config>
@@ -251,12 +266,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2775a39-56bc-4fcb-9460-ef43cd0bd1cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/placeholder.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_booking_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/BookingActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/BookingActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/RoomActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/RoomActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_booking.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_booking.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_room.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_room.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_booking_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_booking_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_room_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_room_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_room_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_room_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-bn/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-bn/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -295,9 +310,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -399,8 +414,15 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
     </key>
+    <key name="android.template.1806725017">
+      <recent name="com.hotel.evergreenkuakata.presentation.booking" />
+      <recent name="com.hotel.evergreenkuakata.presentation.room" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-nodpi" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.hotel.evergreenkuakata.presentation.booking" />
     </key>
     <key name="android.template.1535123492">
       <recent name="com.hotel.evergreenkuakata.presentation.room" />
@@ -497,22 +519,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1734889165590</updated>
-    </task>
-    <task id="LOCAL-00067" summary="feature(language)- Update language manager with proper callbacks and pre load the selected lan">
-      <option name="closed" value="true" />
-      <created>1739428142276</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1739428142276</updated>
-    </task>
-    <task id="LOCAL-00068" summary="feature(language)- Remove unused layout and activity">
-      <option name="closed" value="true" />
-      <created>1739428303861</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1739428303861</updated>
     </task>
     <task id="LOCAL-00069" summary="feature(language)- Update translated texts for en/bn">
       <option name="closed" value="true" />
@@ -890,7 +896,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745040966361</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="Update new room and booking UI">
+      <option name="closed" value="true" />
+      <created>1745043438852</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1745043438852</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Add room and booking list activity">
+      <option name="closed" value="true" />
+      <created>1745055476578</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1745055476578</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -908,9 +930,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="feature(notify-user)- Add notify user functionalities with design" />
-    <MESSAGE value="feature(header)- Add new header on each request" />
-    <MESSAGE value="Release 1.4.10" />
     <MESSAGE value="feature(notify-user): Add open whats app and message with prefilled message impl" />
     <MESSAGE value="feature(notify-user): Add open whats app and message with prefilled message impl in bill history" />
     <MESSAGE value="feature(default-bn-lan): Make bn as app default language" />
@@ -933,7 +952,10 @@
     <MESSAGE value="Add/Update UI and app dependencies" />
     <MESSAGE value="Update home UI" />
     <MESSAGE value="Add dashboard UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add dashboard UI" />
+    <MESSAGE value="Update new room and booking UI" />
+    <MESSAGE value="Add room and booking list UI" />
+    <MESSAGE value="Add room and booking list activity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add room and booking list activity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

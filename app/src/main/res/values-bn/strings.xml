@@ -580,4 +580,5 @@
     <string name="enter_customer_phone_no">Enter Customer Phone No</string>
     <string name="select_booking_date">Select Booking Date</string>
     <string name="new_booking">New Booking</string>
+    <string name="booking_list">Booking List</string>
 </resources>

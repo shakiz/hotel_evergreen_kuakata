@@ -23,7 +23,7 @@
                 android:id="@+id/tool_bar"
                 app:navigationIcon="?attr/homeAsUpIndicator"
                 style="@style/TextAppearance.Widget.Event.Toolbar.Title"
-                app:title="@string/tenant_list"
+                app:title="@string/room_list"
                 app:titleTextColor="@color/md_grey_800">
 
             </androidx.appcompat.widget.Toolbar>
@@ -49,16 +49,16 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/search_layout"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="12dp"
-                android:layout_marginBottom="72dp"
+                android:layout_marginBottom="16dp"
                 android:visibility="visible"
                 app:reverseLayout="true"
                 app:stackFromEnd="true"
-                tools:listitem="@layout/adapter_layout_tenant_list" />
+                tools:listitem="@layout/adapter_layout_room_list" />
 
             <include
                 android:id="@+id/no_data_layout"
@@ -71,44 +71,6 @@
                 android:layout_margin="48dp" />
 
         </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/mAddTenantMaster"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:clickable="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/button_shape_round_corner_gradient_light"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:focusable="true"
-            android:layout_marginEnd="16dp"
-            android:layout_alignParentEnd="true">
-
-            <ImageView
-                android:layout_width="42dp"
-                android:layout_height="match_parent"
-                android:clickable="false"
-                android:contentDescription="@string/banner_description"
-                android:padding="8dp"
-                android:src="@drawable/ic_action_add"
-                android:layout_marginStart="8dp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center|start"
-                android:gravity="center|start"
-                android:clickable="false"
-                android:text="@string/add_tenant"
-                android:textSize="14sp"
-                android:layout_marginEnd="20dp"
-                android:background="@color/transparent"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white" />
-
-        </LinearLayout>
 
     </RelativeLayout>
 

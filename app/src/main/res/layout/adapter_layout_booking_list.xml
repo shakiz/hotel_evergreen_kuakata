@@ -1,0 +1,59 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="false"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvRoomId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Room: Deluxe Room"
+            android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvCustomerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Name: John Doe"
+            android:textColor="@color/md_grey_700"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Date: 16-Apr-2025"
+            android:textColor="@color/md_grey_700"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Phone: 017XXXXXXXX"
+            android:textColor="@color/md_grey_700"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/tvNID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="NID: 1234567890"
+            android:textColor="@color/md_grey_700"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
