@@ -33,10 +33,44 @@ object FirebaseDbHelper {
         }
     }
 
-    fun bookRoom(booking: BookingInfo, onComplete: (Boolean) -> Unit) {
-        db.collection("bookings").add(booking)
+    fun updateRoom(room: Room, onComplete: (Boolean) -> Unit) {
+        db.collection("rooms").document(room.roomId)
+            .set(room)
             .addOnSuccessListener { onComplete(true) }
             .addOnFailureListener { onComplete(false) }
+    }
+
+    fun deleteRoom(roomId: String, onComplete: (Boolean) -> Unit) {
+        db.collection("rooms").document(roomId)
+            .delete()
+            .addOnSuccessListener { onComplete(true) }
+            .addOnFailureListener { onComplete(false) }
+    }
+
+    fun bookRoom(booking: BookingInfo, onComplete: (Boolean, String?) -> Unit) {
+        db.collection("bookings").add(booking)
+            .addOnSuccessListener { ref -> onComplete(true, ref.id) }
+            .addOnFailureListener { onComplete(false, null) }
+    }
+
+    fun updateBookingStatus(bookingId: String, newStatus: String, onComplete: (Boolean) -> Unit) {
+        db.collection("bookings").document(bookingId)
+            .update("bookingStatus", newStatus)
+            .addOnSuccessListener { onComplete(true) }
+            .addOnFailureListener { onComplete(false) }
+    }
+
+    fun getBookingsForDate(date: String, callback: (List<BookingInfo>) -> Unit) {
+        db.collection("bookings")
+            .whereEqualTo("date", date)
+            .get()
+            .addOnSuccessListener { snapshot ->
+                val bookings = snapshot.documents.mapNotNull {
+                    val data = it.toObject(BookingInfo::class.java)
+                    data?.copy(bookingId = it.id)
+                }
+                callback(bookings)
+            }
     }
 
     fun getRoomsWithAvailability(date: String, callback: (List<RoomWithStatus>) -> Unit) {
