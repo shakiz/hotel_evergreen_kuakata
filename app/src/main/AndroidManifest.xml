@@ -49,13 +49,25 @@
             android:theme="@style/AppThemeNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".presentation.room.BookingActivity"
+            android:name=".presentation.booking.BookingActivity"
             android:exported="false"
             android:fitsSystemWindows="true"
             android:theme="@style/AppThemeNoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.room.RoomActivity"
+            android:exported="false"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.booking.BookingListActivity"
+            android:exported="false"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.room.RoomListActivity"
             android:exported="false"
             android:fitsSystemWindows="true"
             android:theme="@style/AppThemeNoActionBar"

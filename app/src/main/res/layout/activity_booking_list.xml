@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/parent_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/window_background">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/md_white_1000"
+            app:elevation="0dp"
+            android:id="@+id/app_bar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tool_bar"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                style="@style/TextAppearance.Widget.Event.Toolbar.Title"
+                app:title="@string/tenant_list"
+                app:titleTextColor="@color/md_grey_800">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/app_bar"
+            android:id="@+id/mainLayout"
+            android:background="@color/md_grey_100">
+
+            <include
+                android:id="@+id/search_layout"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                layout="@layout/custom_search_panel_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_layout"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="72dp"
+                android:visibility="visible"
+                app:reverseLayout="true"
+                app:stackFromEnd="true"
+                tools:listitem="@layout/adapter_layout_tenant_list" />
+
+            <include
+                android:id="@+id/no_data_layout"
+                layout="@layout/no_data_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_margin="48dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/mAddTenantMaster"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button_shape_round_corner_gradient_light"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:contentDescription="@string/banner_description"
+                android:padding="8dp"
+                android:src="@drawable/ic_action_add"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|start"
+                android:gravity="center|start"
+                android:clickable="false"
+                android:text="@string/add_tenant"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/transparent"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

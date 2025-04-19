@@ -1,14 +1,16 @@
-package com.hotel.evergreenkuakata.presentation.room
+package com.hotel.evergreenkuakata.presentation.booking
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
-import com.hotel.evergreenkuakata.databinding.ActivityBookingBinding
+import com.hotel.evergreenkuakata.databinding.ActivityBookingListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class BookingActivity : BaseActivity<ActivityBookingBinding>() {
-    private lateinit var activityBinding: ActivityBookingBinding
+@AndroidEntryPoint
+class BookingListActivity : BaseActivity<ActivityBookingListBinding>() {
+    private lateinit var activityBinding: ActivityBookingListBinding
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -17,7 +19,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     }
 
     override val layoutResourceId: Int
-        get() = R.layout.activity_booking
+        get() = R.layout.activity_booking_list
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +27,11 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         initListeners()
     }
 
-    override fun setVariables(dataBinding: ActivityBookingBinding) {
+    override fun setVariables(dataBinding: ActivityBookingListBinding) {
         activityBinding = dataBinding
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
         activityBinding.toolBar.setNavigationOnClickListener {
             finish()
