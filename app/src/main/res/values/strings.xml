@@ -582,4 +582,10 @@
     <string name="select_booking_date">Select Booking Date</string>
     <string name="new_booking">New Booking</string>
     <string name="booking_list">Booking List</string>
+    <string name="couple_bed">Couple Bed</string>
+    <string name="double_bed">Double Bed</string>
+    <string name="three_bed">Three Bed</string>
+    <string name="x_price">Price: ৳%d</string>
+    <string name="date_x">Date: %s</string>
+    <string name="category_x">Category: %s</string>
 </resources>
