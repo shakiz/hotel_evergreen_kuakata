@@ -3,7 +3,7 @@ package com.hotel.evergreenkuakata.presentation.booking
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hotel.evergreenkuakata.data.model.booking.BookingInfo
-import com.hotel.evergreenkuakata.domain.user.BookingRepo
+import com.hotel.evergreenkuakata.data.repository.BookingRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookingViewModel @Inject constructor(
-    private val bookingRepository: BookingRepo
+    private val bookingRepository: BookingRepositoryImpl
 ) : ViewModel() {
 
     private val _bookingStatus = MutableStateFlow<Result<Unit>?>(null)

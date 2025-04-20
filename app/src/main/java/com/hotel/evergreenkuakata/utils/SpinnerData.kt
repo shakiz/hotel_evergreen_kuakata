@@ -72,6 +72,35 @@ class SpinnerData(private val context: Context) {
         return spinnerValues
     }
 
+    fun setRoomCategoryData(): ArrayList<String> {
+        val spinnerValues = ArrayList<String>()
+        val roomCategoryArray = arrayOf(
+            context.getString(R.string.couple_bed),
+            context.getString(R.string.double_bed),
+            context.getString(R.string.three_bed)
+        )
+        spinnerValues.addAll(roomCategoryArray)
+        return spinnerValues
+    }
+
+    fun getRoomCategoryDataById(roomType: String): Int {
+        val roomCategoryArray = arrayOf(
+            context.getString(R.string.couple_bed),
+            context.getString(R.string.double_bed),
+            context.getString(R.string.three_bed)
+        )
+        return roomCategoryArray.indexOfFirst { it == roomType }
+    }
+
+    fun getRoomCategoryTextDataById(roomType: Int): String {
+        return when (roomType) {
+            0 -> context.getString(R.string.couple_bed)
+            1 -> context.getString(R.string.double_bed)
+            2 -> context.getString(R.string.three_bed)
+            else -> ""
+        }
+    }
+
     fun setRentStatusSpinnerData(): ArrayList<String> {
         val spinnerValues = ArrayList<String>()
         val tenantTypeArray = arrayOf(
