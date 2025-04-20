@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hotel.evergreenkuakata.data.model.booking.RoomWithStatus
 import com.hotel.evergreenkuakata.data.model.room.Room
-import com.hotel.evergreenkuakata.domain.user.RoomRepo
+import com.hotel.evergreenkuakata.data.repository.RoomRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RoomViewModel @Inject constructor(
-    private val roomRepository: RoomRepo
+    private val roomRepository: RoomRepositoryImpl
 ) : ViewModel() {
 
     private val _roomsWithAvailability = MutableStateFlow<List<RoomWithStatus>>(emptyList())
@@ -48,9 +48,9 @@ class RoomViewModel @Inject constructor(
         }
     }
 
-    fun addRoom(room: Room, imageUri: Uri) {
+    fun addRoom(room: Room) {
         viewModelScope.launch {
-            val result = roomRepository.addRoom(room, imageUri)
+            val result = roomRepository.addRoom(room)
             _addRoomStatus.value = result
         }
     }

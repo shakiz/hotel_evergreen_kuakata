@@ -1,60 +1,71 @@
 package com.hotel.evergreenkuakata.data.repository
 
 import android.net.Uri
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageMetadata
 import com.hotel.evergreenkuakata.data.model.booking.RoomWithStatus
 import com.hotel.evergreenkuakata.data.model.room.Room
 import com.hotel.evergreenkuakata.domain.user.RoomRepo
 import kotlinx.coroutines.suspendCancellableCoroutine
-import java.util.UUID
+import javax.inject.Inject
 import kotlin.coroutines.resume
 
-class RoomRepositoryImpl(
-    private val firestore: FirebaseFirestore,
+
+class RoomRepositoryImpl @Inject constructor(
+    database: FirebaseDatabase,
     private val storage: FirebaseStorage
 ) : RoomRepo {
 
-    override suspend fun addRoom(room: Room, imageUri: Uri): Result<Unit> =
+    private val roomsRef = database.getReference("rooms")
+    private val bookingsRef = database.getReference("bookings")
+
+    override suspend fun addRoom(room: Room): Result<Unit> =
         suspendCancellableCoroutine { cont ->
-            val imageRef = storage.reference.child("room_images/${UUID.randomUUID()}.jpg")
-            imageRef.putFile(imageUri).continueWithTask { task ->
-                if (!task.isSuccessful) throw task.exception ?: Exception("Upload failed")
-                imageRef.downloadUrl
-            }.addOnSuccessListener { uri ->
-                val roomData = room.copy(imageUrl = uri.toString())
-                firestore.collection("rooms").add(roomData)
-                    .addOnSuccessListener { cont.resume(Result.success(Unit)) }
-                    .addOnFailureListener { cont.resume(Result.failure(it)) }
-            }.addOnFailureListener {
-                cont.resume(Result.failure(it))
+            try {
+                val newRoomRef = roomsRef.push()
+                newRoomRef.setValue(room)
+                    .addOnSuccessListener {
+                        cont.resume(Result.success(Unit))
+                    }
+                    .addOnFailureListener {
+                        cont.resume(Result.failure(it))
+                    }
+
+            } catch (e: Exception) {
+                cont.resume(Result.failure(e))
             }
         }
 
     override suspend fun getRoomsWithAvailability(date: String): Result<List<RoomWithStatus>> =
         suspendCancellableCoroutine { cont ->
-            firestore.collection("rooms").get().addOnSuccessListener { roomsSnapshot ->
-                val rooms = roomsSnapshot.documents.mapNotNull {
-                    it.toObject(Room::class.java)?.copy(roomId = it.id)
+            roomsRef.get().addOnSuccessListener { roomSnapshot ->
+                val rooms = roomSnapshot.children.mapNotNull { snap ->
+                    snap.getValue(Room::class.java)?.copy(roomId = snap.key ?: "")
                 }
-                firestore.collection("bookings").whereEqualTo("date", date).get()
-                    .addOnSuccessListener { bookingsSnapshot ->
-                        val bookedIds =
-                            bookingsSnapshot.documents.mapNotNull { it.getString("roomId") }
-                        val result = rooms.map { RoomWithStatus(it, it.roomId !in bookedIds) }
-                        cont.resume(Result.success(result))
-                    }.addOnFailureListener {
-                        cont.resume(Result.failure(it))
+
+                bookingsRef.get().addOnSuccessListener { bookingSnapshot ->
+                    val bookedRoomIds = bookingSnapshot.children.mapNotNull { snap ->
+                        val roomId = snap.child("roomId").getValue<String>()
+                        val bookingDate = snap.child("date").getValue<String>()
+                        if (bookingDate == date) roomId else null
                     }
+
+                    val result = rooms.map { RoomWithStatus(it, it.roomId !in bookedRoomIds) }
+                    cont.resume(Result.success(result))
+                }.addOnFailureListener {
+                    cont.resume(Result.failure(it))
+                }
             }.addOnFailureListener {
                 cont.resume(Result.failure(it))
             }
         }
 
     override suspend fun getAllRooms(): Result<List<Room>> = suspendCancellableCoroutine { cont ->
-        firestore.collection("rooms").get().addOnSuccessListener { snapshot ->
-            val rooms = snapshot.documents.mapNotNull {
-                it.toObject(Room::class.java)?.copy(roomId = it.id)
+        roomsRef.get().addOnSuccessListener { snapshot ->
+            val rooms = snapshot.children.mapNotNull { snap ->
+                snap.getValue(Room::class.java)?.copy(roomId = snap.key ?: "")
             }
             cont.resume(Result.success(rooms))
         }.addOnFailureListener {
@@ -64,16 +75,14 @@ class RoomRepositoryImpl(
 
     override suspend fun deleteRoom(roomId: String): Result<Unit> =
         suspendCancellableCoroutine { cont ->
-            firestore.collection("rooms").document(roomId)
-                .delete()
+            roomsRef.child(roomId).removeValue()
                 .addOnSuccessListener { cont.resume(Result.success(Unit)) }
                 .addOnFailureListener { cont.resume(Result.failure(it)) }
         }
 
     override suspend fun updateRoom(room: Room): Result<Unit> =
         suspendCancellableCoroutine { cont ->
-            firestore.collection("rooms").document(room.roomId)
-                .set(room)
+            roomsRef.child(room.roomId).setValue(room)
                 .addOnSuccessListener { cont.resume(Result.success(Unit)) }
                 .addOnFailureListener { cont.resume(Result.failure(it)) }
         }

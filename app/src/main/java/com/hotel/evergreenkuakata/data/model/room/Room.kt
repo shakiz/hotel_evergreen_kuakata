@@ -5,7 +5,8 @@ data class Room(
     var imageUrl: String = "",
     var name: String = "",
     var pricePerNight: Int = 0,
-    var roomCategoryId: Int? = null,
+    var roomCategoryId: Int = 0,
+    var roomCategoryText: String = "",
     var createdAt: Long = System.currentTimeMillis()
 )
 

@@ -1,13 +1,19 @@
 package com.hotel.evergreenkuakata.presentation.room
 
+import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.data.model.room.Room
 import com.hotel.evergreenkuakata.databinding.ActivityRoomBinding
+import com.hotel.evergreenkuakata.utils.SpinnerAdapter
+import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
 import com.hotel.evergreenkuakata.utils.Validation
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,10 +24,15 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     private lateinit var activityBinding: ActivityRoomBinding
     private var room = Room()
     private var command = "add"
+    private var spinnerAdapter = SpinnerAdapter()
+    private var spinnerData = SpinnerData(this)
     private val hashMap: Map<String?, Array<String>?> = HashMap()
     private var validation = Validation(this, hashMap)
+    private var imageUri: Uri? = null
+
     @Inject
     lateinit var tools: Tools
+    private val viewModel by viewModels<RoomViewModel>()
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -36,6 +47,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         loadData()
+        bindUiWithComponents()
         initListeners()
     }
 
@@ -49,7 +61,15 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
         }
     }
 
-    private fun initListeners(){
+    private fun bindUiWithComponents() {
+        spinnerAdapter.setSpinnerAdapter(
+            activityBinding.roomType,
+            this,
+            spinnerData.setRoomCategoryData()
+        )
+    }
+
+    private fun initListeners() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
         activityBinding.toolBar.setNavigationOnClickListener {
             finish()
@@ -68,15 +88,32 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
                 }
             }
         }
+
+        activityBinding.roomType.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    room.roomCategoryId =
+                        spinnerData.getRoomCategoryDataById(
+                            parent.getItemAtPosition(position).toString()
+                        )
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
     }
 
     private fun saveOrUpdateData() {
         room.name = activityBinding.etName.text.toString()
         room.pricePerNight = activityBinding.etPrice.text.toString().toInt()
         if (command == "add") {
-            viewModel.addTenant(tenant)
+            viewModel.addRoom(room)
         } else {
-            viewModel.updateTenant(tenant)
+            viewModel.updateRoom(room)
         }
     }
 }
