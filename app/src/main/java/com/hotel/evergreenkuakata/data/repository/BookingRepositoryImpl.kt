@@ -8,10 +8,22 @@ import javax.inject.Inject
 import kotlin.coroutines.resume
 
 class BookingRepositoryImpl @Inject constructor(
-    private val database: FirebaseDatabase
+    database: FirebaseDatabase
 ) : BookingRepo {
 
     private val bookingsRef = database.getReference("bookings")
+
+    override suspend fun getAllBookings(): Result<List<BookingInfo>> =
+        suspendCancellableCoroutine { cont ->
+            bookingsRef.get().addOnSuccessListener { snapshot ->
+                val rooms = snapshot.children.mapNotNull { snap ->
+                    snap.getValue(BookingInfo::class.java)?.copy(roomId = snap.key ?: "")
+                }
+                cont.resume(Result.success(rooms))
+            }.addOnFailureListener {
+                cont.resume(Result.failure(it))
+            }
+        }
 
     override suspend fun bookRoom(booking: BookingInfo): Result<Unit> =
         suspendCancellableCoroutine { cont ->

@@ -33,7 +33,7 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        spinnerData = SpinnerData(this)
+        initVariables()
         initListeners()
         setRecyclerAdapter()
         initObservers()
@@ -42,6 +42,10 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>() {
 
     override fun setVariables(dataBinding: ActivityRoomListBinding) {
         activityBinding = dataBinding
+    }
+
+    private fun initVariables(){
+        spinnerData = SpinnerData(this)
     }
 
     private fun initListeners() {
