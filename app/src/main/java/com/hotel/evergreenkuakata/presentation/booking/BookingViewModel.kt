@@ -3,7 +3,6 @@ package com.hotel.evergreenkuakata.presentation.booking
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hotel.evergreenkuakata.data.model.booking.BookingInfo
-import com.hotel.evergreenkuakata.data.model.room.Room
 import com.hotel.evergreenkuakata.data.repository.BookingRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,6 +50,13 @@ class BookingViewModel @Inject constructor(
             }.onFailure {
                 _bookingsForDate.value = emptyList()
             }
+        }
+    }
+
+    fun updateBooking(booking: BookingInfo) {
+        viewModelScope.launch {
+            bookingRepository.updateBooking(booking)
+            fetchAllBookings()
         }
     }
 

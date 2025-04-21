@@ -588,4 +588,6 @@
     <string name="x_price">Price: ৳%d</string>
     <string name="date_x">Date: %s</string>
     <string name="category_x">Category: %s</string>
+    <string name="select_checkin_date">Select Checkin Date</string>
+    <string name="select_checkout_date">Select Checkout Date</string>
 </resources>

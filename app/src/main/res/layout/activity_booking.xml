@@ -94,12 +94,28 @@
                     android:textColor="@color/md_black_1000"/>
 
                 <EditText
-                    android:id="@+id/etBookingDate"
+                    android:id="@+id/etCheckInDate"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/edit_text_back"
-                    android:hint="@string/select_booking_date"
+                    android:hint="@string/select_checkin_date"
+                    android:inputType="date"
+                    android:focusable="false"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textColorHint="@color/md_grey_500"
+                    android:textColor="@color/md_black_1000"/>
+
+                <EditText
+                    android:id="@+id/etCheckOutDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_text_back"
+                    android:hint="@string/select_checkout_date"
                     android:inputType="date"
                     android:focusable="false"
                     android:maxLines="1"

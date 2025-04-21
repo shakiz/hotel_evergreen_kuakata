@@ -28,7 +28,7 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() 
             binding.tvDate.text =
                 context.getString(R.string.date_x, getFormattedDate(bookingInfo.createdAt))
             binding.tvPhone.text = "Phone: ${bookingInfo.phone}"
-            binding.tvNID.text = "NID: ${bookingInfo.nid}"
+            binding.tvNID.text = "NID: ${bookingInfo.customerNid}"
         }
     }
 

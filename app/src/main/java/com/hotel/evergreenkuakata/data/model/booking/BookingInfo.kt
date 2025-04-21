@@ -3,16 +3,16 @@ package com.hotel.evergreenkuakata.data.model.booking
 import com.hotel.evergreenkuakata.data.model.room.Room
 
 data class BookingInfo(
-    val bookingId: String = "",
-    val roomId: String = "",
-    val customerName: String = "",
-    val nid: String = "",
-    val phone: String = "",
-    val checkInDate: String = "",   // Format: yyyy-MM-dd
-    val checkOutDate: String = "",  // Format: yyyy-MM-dd
-    val bookingStatus: BookingStatus = BookingStatus.ACTIVE,
-    val totalAmount: Int = 0,
-    val createdAt: Long = System.currentTimeMillis()
+    var bookingId: String = "",
+    var roomId: String = "",
+    var customerName: String = "",
+    var customerNid: String = "",
+    var phone: String = "",
+    var checkInDate: String = "",   // Format: yyyy-MM-dd
+    var checkOutDate: String = "",  // Format: yyyy-MM-dd
+    var bookingStatus: BookingStatus = BookingStatus.ACTIVE,
+    var totalAmount: Int = 0,
+    var createdAt: Long = System.currentTimeMillis()
 )
 
 enum class BookingStatus {
@@ -23,7 +23,7 @@ enum class BookingStatus {
 }
 
 data class RoomWithStatus(
-    val room: Room,
-    val isAvailable: Boolean
+    var room: Room,
+    var isAvailable: Boolean
 )
 
