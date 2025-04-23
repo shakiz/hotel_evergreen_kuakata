@@ -29,6 +29,9 @@
         android:theme="@style/AppThemeNoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.auth.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.onboard.SplashActivity"
             android:enabled="@bool/splash_enabled"
             android:exported="true"

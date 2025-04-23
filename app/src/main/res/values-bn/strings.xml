@@ -589,4 +589,6 @@
     <string name="category_x">Category: %s</string>
     <string name="select_checkin_date">Select Checkin Date</string>
     <string name="select_checkout_date">Select Checkout Date</string>
+    <string name="prompt_email">Enter your registered email</string>
+    <string name="prompt_password">Enter your password</string>
 </resources>
