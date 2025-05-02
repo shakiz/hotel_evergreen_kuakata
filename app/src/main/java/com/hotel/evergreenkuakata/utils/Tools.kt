@@ -32,6 +32,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.hotel.evergreenkuakata.R
+import com.hotel.evergreenkuakata.presentation.auth.LoginActivity
 import com.hotel.evergreenkuakata.presentation.onboard.HomeActivity
 import com.hotel.evergreenkuakata.presentation.onboard.SplashActivity
 import com.hotel.evergreenkuakata.utils.Constants.REQUEST_CALL_CODE
@@ -41,6 +42,7 @@ import com.hotel.evergreenkuakata.utils.Constants.mAccessToken
 import com.hotel.evergreenkuakata.utils.Constants.mAppViewCount
 import com.hotel.evergreenkuakata.utils.Constants.mIsLoggedIn
 import com.hotel.evergreenkuakata.utils.Constants.mLanguage
+import com.hotel.evergreenkuakata.utils.Constants.mOldUser
 import com.hotel.evergreenkuakata.utils.Constants.mRefreshToken
 import com.hotel.evergreenkuakata.utils.Constants.mRefreshTokenValidity
 import com.hotel.evergreenkuakata.utils.Constants.mUserEmail
@@ -189,8 +191,12 @@ class Tools(private val context: Context) {
 
     fun checkLogin(prefManager: PrefManager) {
         Handler().postDelayed({
-            var intent: Intent? = null
-            intent = Intent(context, HomeActivity::class.java)
+            val intent =
+                if (prefManager.getBoolean(mIsLoggedIn)) {
+                    Intent(context, HomeActivity::class.java)
+                } else {
+                    Intent(context, LoginActivity::class.java)
+                }
             context.startActivity(intent)
         }, 1000)
     }

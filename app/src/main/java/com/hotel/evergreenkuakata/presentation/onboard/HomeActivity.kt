@@ -33,7 +33,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity<ActivityHomeBinding>(),LanguageCallBack {
+class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
     private lateinit var activityMainBinding: ActivityHomeBinding
 
     @Inject
@@ -171,7 +171,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),LanguageCallBack {
 
                     },
                     onSecondaryAction = {
-
+                        viewModel.logout()
                     }
                 )
                 bottomSheet.show()

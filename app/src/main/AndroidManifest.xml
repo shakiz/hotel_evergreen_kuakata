@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.hotel.evergreenkuakata">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-sdk tools:overrideLibrary="androidx.core.splashscreen" />
+    <uses-sdk tools:overrideLibrary="androidx.core.splashscreen, com.google.firebase.auth.ktx, com.google.firebase.auth" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -29,9 +26,6 @@
         android:theme="@style/AppThemeNoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".presentation.auth.LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.onboard.SplashActivity"
             android:enabled="@bool/splash_enabled"
             android:exported="true"
@@ -44,6 +38,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.auth.LoginActivity"
+            android:exported="false"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.onboard.HomeActivity"
             android:exported="true"
