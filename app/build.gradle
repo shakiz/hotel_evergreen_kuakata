@@ -6,6 +6,13 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+configurations.configureEach {
+    resolutionStrategy {
+        force 'com.google.firebase:firebase-auth-ktx:22.3.1'
+        force 'com.google.firebase:firebase-auth:22.3.1'
+    }
+}
+
 android {
     compileSdk 34
 
@@ -32,10 +39,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
     buildFeatures {
         dataBinding true
         viewBinding true
     }
+    namespace 'com.hotel.evergreenkuakata'
+}
+
+kotlin {
+    // Adding this solved it
+    jvmToolchain(17)
 }
 
 dependencies {
@@ -71,8 +87,9 @@ dependencies {
 
     //Dependency Injection
     implementation "com.google.dagger:hilt-android:2.48"
-    implementation 'androidx.activity:activity:1.10.1'
     kapt "com.google.dagger:hilt-compiler:2.48"
+
+    implementation 'com.google.firebase:firebase-auth-ktx:22.3.1'
 
     //Image Loading
     implementation 'com.github.bumptech.glide:glide:4.16.0'
