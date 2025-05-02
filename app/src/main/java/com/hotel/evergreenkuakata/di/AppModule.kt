@@ -1,6 +1,7 @@
 package com.hotel.evergreenkuakata.di
 
 import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.hotel.evergreenkuakata.utils.PrefManager
@@ -23,6 +24,12 @@ object AppModule {
     @Singleton
     fun provideFirebaseStorage(): FirebaseStorage {
         return FirebaseStorage.getInstance()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
     }
 
     @Provides
