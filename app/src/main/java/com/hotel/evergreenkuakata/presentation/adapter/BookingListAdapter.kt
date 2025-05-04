@@ -23,12 +23,13 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() 
         RecyclerView.ViewHolder(binding.root) {
         fun bind(bookingInfo: BookingInfo) {
             val context = binding.root.context
-            binding.tvRoomId.text = "Room: ${bookingInfo.roomId}"
-            binding.tvCustomerName.text = "Name: ${bookingInfo.customerName}"
+            binding.tvRoomId.text = context.getString(R.string.room_x)
+            binding.tvCustomerName.text =
+                context.getString(R.string.customer_name_x, bookingInfo.customerName)
             binding.tvDate.text =
                 context.getString(R.string.date_x, getFormattedDate(bookingInfo.createdAt))
-            binding.tvPhone.text = "Phone: ${bookingInfo.phone}"
-            binding.tvNID.text = "NID: ${bookingInfo.customerNid}"
+            binding.tvPhone.text = context.getString(R.string.phone_x, bookingInfo.phone)
+            binding.tvNID.text = context.getString(R.string.nid_x, bookingInfo.customerNid)
         }
     }
 

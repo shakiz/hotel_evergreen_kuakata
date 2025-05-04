@@ -5,11 +5,12 @@ import com.hotel.evergreenkuakata.data.model.room.Room
 data class BookingInfo(
     var bookingId: String = "",
     var roomId: String = "",
+    var roomName: String = "",
     var customerName: String = "",
     var customerNid: String = "",
     var phone: String = "",
-    var checkInDate: String = "",   // Format: yyyy-MM-dd
-    var checkOutDate: String = "",  // Format: yyyy-MM-dd
+    var checkInDate: String = "",
+    var checkOutDate: String = "",
     var bookingStatus: BookingStatus = BookingStatus.ACTIVE,
     var totalAmount: Int = 0,
     var createdAt: Long = System.currentTimeMillis()

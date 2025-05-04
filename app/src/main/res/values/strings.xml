@@ -9,7 +9,7 @@
     <string name="add_room">Add New Room</string>
     <string name="add_meter">Add New Meter</string>
     <string name="room_hint">Enter Room/Flat Name</string>
-    <string name="room_name">Room/Flat Name</string>
+    <string name="room_name">Room Name</string>
     <string name="select_month">Select Starting Month</string>
     <string name="tenant_name">Tenant Name</string>
     <string name="tenant_hint">Enter tenant name</string>
@@ -23,7 +23,7 @@
     <!--Meter start-->
     <string name="meter_name">Meter Name</string>
     <string name="meter_hint">Enter Meter Name</string>
-    <string name="select_room">Select Room/Flat</string>
+    <string name="select_room">Select Room</string>
     <string name="select_meter_type">Select Meter Type</string>
     <!--Meter end-->
 
@@ -201,7 +201,7 @@
     <string name="mobile">Mobile</string>
     <string name="not_a_valid_email_address">Not a valid email address</string>
     <string name="email_validation">Email field is missing data</string>
-    <string name="room_name_validation">Please enter room/flat name</string>
+    <string name="room_name_validation">Please enter room name</string>
     <string name="advance_amount_validation">Please enter advance amount</string>
     <string name="rent_amount_validation">Please enter rent amount</string>
     <string name="tenant_amount_validation">Please enter tenant name</string>
@@ -595,4 +595,17 @@
     <string name="booked_x">Booked: %d</string>
     <string name="available_x">Available: %d</string>
     <string name="booking_confirmed">Booking Confirmed</string>
+    <string name="select_room_category">Select Room Category</string>
+    <string name="room_rent_amount_validation">Please Enter Room Rent Amount</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_nid">Customer NID</string>
+    <string name="customer_phone_no">Customer Phone No</string>
+    <string name="checkin_date">Checkin Date</string>
+    <string name="checkout_date">Checkout Date</string>
+    <string name="room_added_detail_text">Room has been added successfully.</string>
+    <string name="booking_created_detail_text">Room has been booked successfully.</string>
+    <string name="room_x">Room: %s</string>
+    <string name="customer_name_x">Customer Name; %s</string>
+    <string name="phone_x">Phone: %s</string>
+    <string name="nid_x">NID: %s</string>
 </resources>

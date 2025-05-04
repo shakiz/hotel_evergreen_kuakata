@@ -39,20 +39,37 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_room"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
+
                 <Spinner
                     android:id="@+id/roomId"
                     style="@style/Base.TextAppearance.AppCompat.Medium"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:tag="@string/tenant_type" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/customer_name"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/etCustomerName"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/enter_customer_name"
                     android:inputType="text"
@@ -63,11 +80,20 @@
                     android:textColorHint="@color/md_grey_500"
                     android:textColor="@color/md_black_1000"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/customer_nid"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/etNID"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/enter_customer_nid"
                     android:inputType="number"
@@ -78,11 +104,20 @@
                     android:textColorHint="@color/md_grey_500"
                     android:textColor="@color/md_black_1000"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/customer_phone_no"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/enter_customer_phone_no"
                     android:inputType="phone"
@@ -93,11 +128,20 @@
                     android:textColorHint="@color/md_grey_500"
                     android:textColor="@color/md_black_1000"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/checkin_date"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/etCheckInDate"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/select_checkin_date"
                     android:inputType="date"
@@ -109,11 +153,20 @@
                     android:textColorHint="@color/md_grey_500"
                     android:textColor="@color/md_black_1000"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/checkout_date"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/etCheckOutDate"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/select_checkout_date"
                     android:inputType="date"

@@ -594,4 +594,17 @@
     <string name="booked_x">Booked: %d</string>
     <string name="available_x">Available: %d</string>
     <string name="booking_confirmed">Booking Confirmed</string>
+    <string name="select_room_category">Select Room Category</string>
+    <string name="room_rent_amount_validation">Please Enter Room Rent Amount</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_nid">Customer NID</string>
+    <string name="customer_phone_no">Customer Phone No</string>
+    <string name="checkin_date">Checkin Date</string>
+    <string name="checkout_date">Checkout Date</string>
+    <string name="room_added_detail_text">Room has been added successfully.</string>
+    <string name="booking_created_detail_text">Room has been booked successfully.</string>
+    <string name="room_x">Room: %s</string>
+    <string name="customer_name_x">Customer Name; %s</string>
+    <string name="phone_x">Phone: %s</string>
+    <string name="nid_x">NID: %s</string>
 </resources>

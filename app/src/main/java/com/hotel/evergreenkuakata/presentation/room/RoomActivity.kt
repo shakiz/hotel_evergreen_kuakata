@@ -1,12 +1,20 @@
 package com.hotel.evergreenkuakata.presentation.room
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.AdapterView
+import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.data.model.room.Room
@@ -15,7 +23,9 @@ import com.hotel.evergreenkuakata.utils.SpinnerAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
 import com.hotel.evergreenkuakata.utils.Validation
+import com.hotel.evergreenkuakata.utils.orFalse
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -47,6 +57,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
         loadData()
         bindUiWithComponents()
         initListeners()
+        initObservers()
     }
 
     override fun setVariables(dataBinding: ActivityRoomBinding) {
@@ -60,6 +71,14 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     }
 
     private fun bindUiWithComponents() {
+        validation.setEditTextIsNotEmpty(
+            arrayOf("etName", "etPrice"), arrayOf(
+                getString(R.string.room_name_validation),
+                getString(R.string.room_rent_amount_validation),
+            )
+        )
+        validation.setSpinnerIsNotEmpty(arrayOf("roomType"))
+
         spinnerAdapter.setSpinnerAdapter(
             activityBinding.roomType,
             this,
@@ -103,6 +122,48 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
+    }
+
+    private fun initObservers() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.addRoomStatus.collect { bookingStatus ->
+                        if (bookingStatus?.isSuccess.orFalse()) {
+                            doPopupForSuccess()
+                            clearAllUiData()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun doPopupForSuccess() {
+        val cancel: Button
+        val dialog = Dialog(this@RoomActivity, android.R.style.Theme_Dialog)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.room_save_confirmation_layout)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCanceledOnTouchOutside(true)
+        cancel = dialog.findViewById(R.id.cancelButton)
+        cancel.setOnClickListener { dialog.dismiss() }
+        cancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        dialog.window?.setLayout(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        dialog.show()
+    }
+
+    private fun clearAllUiData() {
+        activityBinding.etName.text.clear()
+        activityBinding.etPrice.text.clear()
+        activityBinding.roomType.setSelection(0)
     }
 
     private fun saveOrUpdateData() {

@@ -1,8 +1,13 @@
 package com.hotel.evergreenkuakata.presentation.booking
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.AdapterView
+import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
@@ -15,7 +20,6 @@ import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.data.model.booking.BookingInfo
 import com.hotel.evergreenkuakata.databinding.ActivityBookingBinding
 import com.hotel.evergreenkuakata.utils.DatePickerManager
-import com.hotel.evergreenkuakata.utils.DateTimeConstants.APP_DATE_FORMAT
 import com.hotel.evergreenkuakata.utils.SpinnerAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
@@ -23,10 +27,6 @@ import com.hotel.evergreenkuakata.utils.Validation
 import com.hotel.evergreenkuakata.utils.orFalse
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -127,7 +127,8 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                     position: Int,
                     id: Long
                 ) {
-                    val item = parent.getItemAtPosition(position)
+                    val item = parent.getItemAtPosition(position).toString()
+                    booking.roomName = item
                     booking.roomId =
                         viewModel.roomsWithAvailability.value.first { it.room.name == item }.room.roomId
                 }
@@ -153,16 +154,43 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                 launch {
                     viewModel.bookingStatus.collect { bookingStatus ->
                         if (bookingStatus?.isSuccess.orFalse()) {
-                            Toast.makeText(
-                                this@BookingActivity,
-                                getString(R.string.booking_confirmed),
-                                Toast.LENGTH_LONG
-                            ).show()
+                            doPopupForSuccess()
+                            clearAllUiData()
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun doPopupForSuccess() {
+        val cancel: Button
+        val dialog = Dialog(this@BookingActivity, android.R.style.Theme_Dialog)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.booking_confirmation_layout)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCanceledOnTouchOutside(true)
+        cancel = dialog.findViewById(R.id.cancelButton)
+        cancel.setOnClickListener { dialog.dismiss() }
+        cancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        dialog.window?.setLayout(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        dialog.show()
+    }
+
+    private fun clearAllUiData() {
+        activityBinding.roomId.setSelection(0)
+        activityBinding.etCustomerName.text.clear()
+        activityBinding.etNID.text.clear()
+        activityBinding.etPhone.text.clear()
+        activityBinding.etCheckInDate.text.clear()
+        activityBinding.etCheckOutDate.text.clear()
     }
 
     private fun saveOrUpdateData() {

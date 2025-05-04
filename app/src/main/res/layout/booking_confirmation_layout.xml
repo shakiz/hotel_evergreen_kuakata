@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="@color/md_white_1000"
+    app:cardCornerRadius="16dp"
+    app:cardUseCompatPadding="false"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/logoutSadText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/booking_created_detail_text"
+            android:textColor="@color/md_green_800"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            style="@style/AppTheme.Button.Primary"
+            android:layout_width="200dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/nav_close"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
