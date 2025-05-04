@@ -1,6 +1,5 @@
 package com.hotel.evergreenkuakata.presentation.room
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -28,7 +27,6 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     private var spinnerData = SpinnerData(this)
     private val hashMap: Map<String?, Array<String>?> = HashMap()
     private var validation = Validation(this, hashMap)
-    private var imageUri: Uri? = null
 
     @Inject
     lateinit var tools: Tools

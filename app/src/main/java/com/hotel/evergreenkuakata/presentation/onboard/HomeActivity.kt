@@ -14,6 +14,9 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.databinding.ActivityHomeBinding
@@ -30,7 +33,9 @@ import com.hotel.evergreenkuakata.utils.Tools
 import com.hotel.evergreenkuakata.utils.UX
 import com.hotel.evergreenkuakata.utils.UtilsForAll
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
@@ -38,8 +43,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
 
     @Inject
     lateinit var prefManager: PrefManager
+    @Inject
+    lateinit var tools: Tools
     private lateinit var utilsForAll: UtilsForAll
-    private var tools = Tools(this)
     private lateinit var ux: UX
     private val viewModel by viewModels<HomeViewModel>()
     private var languageMap = HashMap<String, String>()
@@ -69,6 +75,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         setupLanguage()
         initListeners()
         initObservers()
+        viewModel.fetchBookingsForDate(tools.getTodayDate())
     }
 
     private fun init() {
@@ -112,7 +119,21 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
     }
 
     private fun initObservers() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.roomsWithAvailability.collect { availableRooms ->
+                        activityMainBinding.tvBookedRooms.text = getString(R.string.available_x, availableRooms.size)
+                    }
+                }
 
+                launch {
+                    viewModel.bookingsForDate.collect { bookings ->
+                        activityMainBinding.tvBookedRooms.text = getString(R.string.booked_x, bookings.size)
+                    }
+                }
+            }
+        }
     }
 
     private fun bindUIWithComponents() {

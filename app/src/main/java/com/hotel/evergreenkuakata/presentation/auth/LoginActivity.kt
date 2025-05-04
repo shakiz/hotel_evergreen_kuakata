@@ -1,5 +1,6 @@
 package com.hotel.evergreenkuakata.presentation.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -8,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.databinding.ActivityLoginBinding
+import com.hotel.evergreenkuakata.presentation.onboard.HomeActivity
 import com.hotel.evergreenkuakata.utils.Constants
 import com.hotel.evergreenkuakata.utils.PrefManager
 import com.hotel.evergreenkuakata.utils.Tools
@@ -81,6 +83,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                             "Logged in as ${state.user?.email}",
                             Toast.LENGTH_SHORT
                         ).show()
+                        startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                     }
 
                     is AuthState.Error -> {

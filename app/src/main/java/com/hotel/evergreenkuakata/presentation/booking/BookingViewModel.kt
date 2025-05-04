@@ -3,7 +3,9 @@ package com.hotel.evergreenkuakata.presentation.booking
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hotel.evergreenkuakata.data.model.booking.BookingInfo
+import com.hotel.evergreenkuakata.data.model.booking.RoomWithStatus
 import com.hotel.evergreenkuakata.data.repository.BookingRepositoryImpl
+import com.hotel.evergreenkuakata.data.repository.RoomRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookingViewModel @Inject constructor(
-    private val bookingRepository: BookingRepositoryImpl
+    private val bookingRepository: BookingRepositoryImpl,
+    private val roomRepository: RoomRepositoryImpl
 ) : ViewModel() {
 
     private val _allBookings = MutableStateFlow<List<BookingInfo>>(emptyList())
@@ -24,6 +27,9 @@ class BookingViewModel @Inject constructor(
     private val _bookingsForDate = MutableStateFlow<List<BookingInfo>>(emptyList())
     val bookingsForDate: StateFlow<List<BookingInfo>> = _bookingsForDate
 
+    private val _roomsWithAvailability = MutableStateFlow<List<RoomWithStatus>>(emptyList())
+    val roomsWithAvailability: StateFlow<List<RoomWithStatus>> = _roomsWithAvailability
+
     fun fetchAllBookings() {
         viewModelScope.launch {
             val result = bookingRepository.getAllBookings()
@@ -31,6 +37,17 @@ class BookingViewModel @Inject constructor(
                 _allBookings.value = it
             }.onFailure {
                 _allBookings.value = emptyList()
+            }
+        }
+    }
+
+    fun fetchRoomsWithAvailability(date: String) {
+        viewModelScope.launch {
+            val result = roomRepository.getRoomsWithAvailability(date)
+            result.onSuccess {
+                _roomsWithAvailability.value = it
+            }.onFailure {
+                _roomsWithAvailability.value = emptyList() // or handle error appropriately
             }
         }
     }

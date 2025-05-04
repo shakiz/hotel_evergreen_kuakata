@@ -49,9 +49,13 @@ import com.hotel.evergreenkuakata.utils.Constants.mUserEmail
 import com.hotel.evergreenkuakata.utils.Constants.mUserFullName
 import com.hotel.evergreenkuakata.utils.Constants.mUserId
 import com.hotel.evergreenkuakata.utils.Constants.mUserMobile
+import com.hotel.evergreenkuakata.utils.DateTimeConstants.APP_DATE_FORMAT
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import java.util.regex.Matcher
 
 class Tools(private val context: Context) {
@@ -303,5 +307,12 @@ class Tools(private val context: Context) {
             }
             notificationManager.notify(0 /* ID of notification */, notificationBuilder.build())
         }
+    }
+
+    fun getTodayDate(): String{
+        val c: Date = Calendar.getInstance().time
+        val df = SimpleDateFormat(APP_DATE_FORMAT, Locale.getDefault())
+        val formattedDate: String = df.format(c)
+        return formattedDate
     }
 }

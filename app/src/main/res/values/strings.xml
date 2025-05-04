@@ -592,4 +592,7 @@
     <string name="select_checkout_date">Select Checkout Date</string>
     <string name="prompt_email">Enter your registered email</string>
     <string name="prompt_password">Enter your password</string>
+    <string name="booked_x">Booked: %d</string>
+    <string name="available_x">Available: %d</string>
+    <string name="booking_confirmed">Booking Confirmed</string>
 </resources>

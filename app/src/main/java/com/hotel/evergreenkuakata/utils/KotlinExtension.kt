@@ -51,7 +51,10 @@ import kotlinx.coroutines.flow.debounce
 import java.io.File
 import java.net.URL
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Date
+import java.util.Locale
 import kotlin.math.round
 
 
@@ -403,4 +406,12 @@ fun EditText.showKeyboard() {
         val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(this, SHOW_FORCED)
     }
+}
+
+fun String.formatDate(inputPattern: String): String {
+    val inputFormat = SimpleDateFormat(inputPattern, Locale.ENGLISH)
+    val outputFormat = SimpleDateFormat(DateTimeConstants.APP_DATE_FORMAT, Locale.ENGLISH)
+
+    val date: Date = inputFormat.parse(this) ?: return ""
+    return outputFormat.format(date)
 }

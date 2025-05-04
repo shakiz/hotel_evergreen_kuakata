@@ -7,15 +7,26 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.data.model.booking.BookingInfo
 import com.hotel.evergreenkuakata.databinding.ActivityBookingBinding
+import com.hotel.evergreenkuakata.utils.DatePickerManager
+import com.hotel.evergreenkuakata.utils.DateTimeConstants.APP_DATE_FORMAT
 import com.hotel.evergreenkuakata.utils.SpinnerAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
 import com.hotel.evergreenkuakata.utils.Validation
+import com.hotel.evergreenkuakata.utils.orFalse
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -47,6 +58,9 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         loadData()
         bindUiWithComponents()
         initListeners()
+        initObservers()
+
+        viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
     }
 
     override fun setVariables(dataBinding: ActivityBookingBinding) {
@@ -73,6 +87,24 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
             finish()
         }
 
+        activityBinding.etCheckInDate.setOnClickListener {
+            DatePickerManager().showDatePicker(this, object : DatePickerManager.DatePickerCallback {
+                override fun onDateSelected(date: String) {
+                    activityBinding.etCheckInDate.setText(date)
+                    booking.checkInDate = date
+                }
+            })
+        }
+
+        activityBinding.etCheckOutDate.setOnClickListener {
+            DatePickerManager().showDatePicker(this, object : DatePickerManager.DatePickerCallback {
+                override fun onDateSelected(date: String) {
+                    activityBinding.etCheckOutDate.setText(date)
+                    booking.checkOutDate = date
+                }
+            })
+        }
+
         activityBinding.btnBook.setOnClickListener {
             if (validation.isValid) {
                 if (tools.hasConnection()) {
@@ -95,19 +127,48 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                     position: Int,
                     id: Long
                 ) {
-                    booking.roomId = ""
+                    val item = parent.getItemAtPosition(position)
+                    booking.roomId =
+                        viewModel.roomsWithAvailability.value.first { it.room.name == item }.room.roomId
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
     }
 
+    private fun initObservers() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.roomsWithAvailability.collect { availableRooms ->
+                        val rooms = ArrayList(availableRooms.map { it.room.name })
+                        spinnerAdapter.setSpinnerAdapter(
+                            activityBinding.roomId,
+                            this@BookingActivity,
+                            rooms
+                        )
+                    }
+                }
+
+                launch {
+                    viewModel.bookingStatus.collect { bookingStatus ->
+                        if (bookingStatus?.isSuccess.orFalse()) {
+                            Toast.makeText(
+                                this@BookingActivity,
+                                getString(R.string.booking_confirmed),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private fun saveOrUpdateData() {
         booking.customerName = activityBinding.etCustomerName.text.toString()
         booking.customerNid = activityBinding.etNID.text.toString()
         booking.phone = activityBinding.etPhone.text.toString()
-        booking.checkInDate = activityBinding.etCheckInDate.text.toString()
-        booking.checkInDate = activityBinding.etCheckOutDate.text.toString()
         if (command == "add") {
             viewModel.bookRoom(booking)
         } else {
