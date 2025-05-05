@@ -22,6 +22,7 @@ import com.hotel.evergreenkuakata.databinding.ActivityRoomBinding
 import com.hotel.evergreenkuakata.utils.SpinnerAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
+import com.hotel.evergreenkuakata.utils.UX
 import com.hotel.evergreenkuakata.utils.Validation
 import com.hotel.evergreenkuakata.utils.orFalse
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +37,8 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     private var spinnerAdapter = SpinnerAdapter()
     private var spinnerData = SpinnerData(this)
     private val hashMap: Map<String?, Array<String>?> = HashMap()
-    private var validation = Validation(this, hashMap)
+    private lateinit var validation: Validation
+    private lateinit var ux: UX
 
     @Inject
     lateinit var tools: Tools
@@ -54,6 +56,8 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        init()
+        intentData()
         loadData()
         bindUiWithComponents()
         initListeners()
@@ -64,9 +68,28 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
         activityBinding = dataBinding
     }
 
+    private fun init(){
+        validation = Validation(this, hashMap)
+        ux = UX(this)
+    }
+
+    private fun intentData() {
+        if (intent.extras != null) {
+            room =
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableExtra("room", Room::class.java)!!
+                } else {
+                    intent.getParcelableExtra("room")!!
+                }
+        }
+    }
+
     private fun loadData() {
         if (room.roomId.isNotEmpty()) {
             command = "update"
+            activityBinding.etName.setText(room.name)
+            activityBinding.etPrice.setText(room.pricePerNight)
+            activityBinding.roomType.setSelection(room.roomCategoryId)
         }
     }
 
@@ -115,7 +138,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
                     id: Long
                 ) {
                     room.roomCategoryId =
-                        spinnerData.getRoomCategoryDataById(
+                        spinnerData.getRoomCategoryDataByName(
                             parent.getItemAtPosition(position).toString()
                         )
                 }
@@ -130,6 +153,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
                 launch {
                     viewModel.addRoomStatus.collect { bookingStatus ->
                         if (bookingStatus?.isSuccess.orFalse()) {
+                            ux.removeLoadingView()
                             doPopupForSuccess()
                             clearAllUiData()
                         }
@@ -169,6 +193,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     private fun saveOrUpdateData() {
         room.name = activityBinding.etName.text.toString()
         room.pricePerNight = activityBinding.etPrice.text.toString().toInt()
+        ux.getLoadingView()
         if (command == "add") {
             viewModel.addRoom(room)
         } else {

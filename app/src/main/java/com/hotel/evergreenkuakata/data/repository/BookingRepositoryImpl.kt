@@ -17,7 +17,7 @@ class BookingRepositoryImpl @Inject constructor(
         suspendCancellableCoroutine { cont ->
             bookingsRef.get().addOnSuccessListener { snapshot ->
                 val rooms = snapshot.children.mapNotNull { snap ->
-                    snap.getValue(BookingInfo::class.java)?.copy(roomId = snap.key ?: "")
+                    snap.getValue(BookingInfo::class.java)?.copy(roomId = snap.key.orEmpty())
                 }
                 cont.resume(Result.success(rooms))
             }.addOnFailureListener {
@@ -28,7 +28,7 @@ class BookingRepositoryImpl @Inject constructor(
     override suspend fun bookRoom(booking: BookingInfo): Result<Unit> =
         suspendCancellableCoroutine { cont ->
             val newRef = bookingsRef.push()
-            val bookingWithId = booking.copy(bookingId = newRef.key ?: "")
+            val bookingWithId = booking.copy(bookingId = newRef.key.orEmpty())
             newRef.setValue(bookingWithId)
                 .addOnSuccessListener { cont.resume(Result.success(Unit)) }
                 .addOnFailureListener { cont.resume(Result.failure(it)) }
@@ -40,8 +40,8 @@ class BookingRepositoryImpl @Inject constructor(
                 .addOnSuccessListener { snapshot ->
                     val bookings = snapshot.children.mapNotNull { snap ->
                         val booking = snap.getValue(BookingInfo::class.java)
-                        if (booking?.checkInDate == date) {
-                            booking.copy(bookingId = snap.key ?: "")
+                        if (booking?.bookingDate == date) {
+                            booking.copy(bookingId = snap.key.orEmpty())
                         } else null
                     }
                     cont.resume(Result.success(bookings))

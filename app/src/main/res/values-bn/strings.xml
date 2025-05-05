@@ -607,4 +607,18 @@
     <string name="customer_name_x">Customer Name; %s</string>
     <string name="phone_x">Phone: %s</string>
     <string name="nid_x">NID: %s</string>
+    <string name="booking_status">Booking Status</string>
+    <string name="select_booking_status">Select Booking Status</string>
+    <string name="customer_name_validation">Please Enter Customer Name</string>
+    <string name="nid_validation">Please Enter Customer NID No</string>
+    <string name="phone_no_validation">Please Enter Customer Phone No</string>
+    <string name="checkin_date_validation">Please Select Checkin Date</string>
+    <string name="checkout_date_validation">Please Select Checkout Date</string>
+    <string name="active">Active</string>
+    <string name="checked_in">Checked In</string>
+    <string name="checked_out">Checked Out</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="room_summary_today">Room Summary (Today)</string>
+    <string name="today_x">Today: %d</string>
+    <string name="this_month_x">This Month: %d</string>
 </resources>

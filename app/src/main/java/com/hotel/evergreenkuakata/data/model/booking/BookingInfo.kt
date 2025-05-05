@@ -1,5 +1,7 @@
 package com.hotel.evergreenkuakata.data.model.booking
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.hotel.evergreenkuakata.data.model.room.Room
 
 data class BookingInfo(
@@ -11,16 +13,54 @@ data class BookingInfo(
     var phone: String = "",
     var checkInDate: String = "",
     var checkOutDate: String = "",
-    var bookingStatus: BookingStatus = BookingStatus.ACTIVE,
+    var bookingDate: String = "",
+    var bookingStatus: String = "",
     var totalAmount: Int = 0,
     var createdAt: Long = System.currentTimeMillis()
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
+        parcel.readInt(),
+        parcel.readLong()
+    )
 
-enum class BookingStatus {
-    ACTIVE,        // Booking confirmed, not yet checked in
-    CHECKED_IN,    // Guest has checked in
-    COMPLETED,     // Guest has checked out
-    CANCELLED      // Booking was cancelled
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(bookingId)
+        parcel.writeString(roomId)
+        parcel.writeString(roomName)
+        parcel.writeString(customerName)
+        parcel.writeString(customerNid)
+        parcel.writeString(phone)
+        parcel.writeString(checkInDate)
+        parcel.writeString(checkOutDate)
+        parcel.writeString(bookingDate)
+        parcel.writeString(bookingStatus)
+        parcel.writeInt(totalAmount)
+        parcel.writeLong(createdAt)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<BookingInfo> {
+        override fun createFromParcel(parcel: Parcel): BookingInfo {
+            return BookingInfo(parcel)
+        }
+
+        override fun newArray(size: Int): Array<BookingInfo?> {
+            return arrayOfNulls(size)
+        }
+    }
 }
 
 data class RoomWithStatus(

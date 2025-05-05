@@ -23,6 +23,7 @@ import com.hotel.evergreenkuakata.utils.DatePickerManager
 import com.hotel.evergreenkuakata.utils.SpinnerAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
+import com.hotel.evergreenkuakata.utils.UX
 import com.hotel.evergreenkuakata.utils.Validation
 import com.hotel.evergreenkuakata.utils.orFalse
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,8 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     private var spinnerAdapter = SpinnerAdapter()
     private var spinnerData = SpinnerData(this)
     private val hashMap: Map<String?, Array<String>?> = HashMap()
-    private var validation = Validation(this, hashMap)
+    private lateinit var validation : Validation
+    private lateinit var ux: UX
 
     @Inject
     lateinit var tools: Tools
@@ -55,6 +57,8 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        init()
+        intentData()
         loadData()
         bindUiWithComponents()
         initListeners()
@@ -67,17 +71,57 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         activityBinding = dataBinding
     }
 
+    private fun init(){
+        validation = Validation(this, hashMap)
+        ux = UX(this)
+    }
+
+    private fun intentData() {
+        if (intent.extras != null) {
+            booking =
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableExtra("bookingInfo", BookingInfo::class.java)!!
+                } else {
+                    intent.getParcelableExtra("bookingInfo")!!
+                }
+        }
+    }
+
     private fun loadData() {
         if (booking.bookingId.isNotEmpty()) {
             command = "update"
+            activityBinding.etCustomerName.setText(booking.customerName)
+            activityBinding.etNID.setText(booking.customerNid)
+            activityBinding.etPhone.setText(booking.phone)
+            activityBinding.etCheckInDate.setText(booking.checkInDate)
+            activityBinding.etCheckOutDate.setText(booking.checkOutDate)
+            activityBinding.etCheckOutDate.setText(spinnerData.getBookingStatusDataByName(booking.bookingStatus))
         }
     }
 
     private fun bindUiWithComponents() {
+        validation.setEditTextIsNotEmpty(
+            arrayOf("etCustomerName", "etNID", "etPhone", "etCheckInDate"),
+            arrayOf(
+                getString(R.string.customer_name_validation),
+                getString(R.string.nid_validation),
+                getString(R.string.phone_no_validation),
+                getString(R.string.checkin_date_validation),
+                getString(R.string.checkout_date_validation),
+            )
+        )
+        validation.setSpinnerIsNotEmpty(arrayOf("roomId", "bookingStatus"))
+
         spinnerAdapter.setSpinnerAdapter(
             activityBinding.roomId,
             this,
             spinnerData.setSpinnerNoData()
+        )
+
+        spinnerAdapter.setSpinnerAdapter(
+            activityBinding.bookingStatus,
+            this,
+            spinnerData.setBookingStatusData()
         )
     }
 
@@ -135,6 +179,21 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
+
+        activityBinding.bookingStatus.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    val item = parent.getItemAtPosition(position).toString().lowercase()
+                    booking.bookingStatus = item
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
     }
 
     private fun initObservers() {
@@ -148,12 +207,21 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                             this@BookingActivity,
                             rooms
                         )
+
+                        if (booking.roomId.isNotEmpty()) {
+                            val selectedIndex =
+                                viewModel.roomsWithAvailability.value.indexOfFirst { it.room.name == booking.roomName }
+                            activityBinding.roomId.setSelection(
+                                selectedIndex
+                            )
+                        }
                     }
                 }
 
                 launch {
                     viewModel.bookingStatus.collect { bookingStatus ->
                         if (bookingStatus?.isSuccess.orFalse()) {
+                            ux.removeLoadingView()
                             doPopupForSuccess()
                             clearAllUiData()
                         }
@@ -197,6 +265,8 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         booking.customerName = activityBinding.etCustomerName.text.toString()
         booking.customerNid = activityBinding.etNID.text.toString()
         booking.phone = activityBinding.etPhone.text.toString()
+        booking.bookingDate = tools.getTodayDate()
+        ux.getLoadingView()
         if (command == "add") {
             viewModel.bookRoom(booking)
         } else {

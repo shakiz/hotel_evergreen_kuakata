@@ -83,7 +83,7 @@ class SpinnerData(private val context: Context) {
         return spinnerValues
     }
 
-    fun getRoomCategoryDataById(roomType: String): Int {
+    fun getRoomCategoryDataByName(roomType: String): Int {
         val roomCategoryArray = arrayOf(
             context.getString(R.string.couple_bed),
             context.getString(R.string.double_bed),
@@ -123,5 +123,36 @@ class SpinnerData(private val context: Context) {
         val meterTypeArray = arrayOf("No Data")
         Collections.addAll(spinnerValues, *meterTypeArray)
         return spinnerValues
+    }
+
+    fun setBookingStatusData(): ArrayList<String> {
+        val spinnerValues = ArrayList<String>()
+        val roomCategoryArray = arrayOf(
+            context.getString(R.string.active),
+            context.getString(R.string.checked_in),
+            context.getString(R.string.checked_out),
+            context.getString(R.string.cancelled)
+        )
+        spinnerValues.addAll(roomCategoryArray)
+        return spinnerValues
+    }
+
+    fun getBookingStatusDataByName(bookingStatus: String): Int {
+        val roomCategoryArray = arrayOf(
+            context.getString(R.string.active),
+            context.getString(R.string.checked_in),
+            context.getString(R.string.checked_out),
+            context.getString(R.string.cancelled)
+        )
+        return roomCategoryArray.indexOfFirst { it == bookingStatus }
+    }
+
+    fun getBookingStatusTextDataById(bookingStatus: Int): String {
+        return when (bookingStatus) {
+            0 -> context.getString(R.string.active)
+            1 -> context.getString(R.string.checked_in)
+            2 -> context.getString(R.string.checked_out)
+            else -> context.getString(R.string.cancelled)
+        }
     }
 }

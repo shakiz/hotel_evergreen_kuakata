@@ -18,9 +18,9 @@ class RoomAdapter : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
 
 
     interface RoomCallBacks {
-        fun onDelete(tenant: Room)
-        fun onEdit(tenant: Room)
-        fun onItemClick(tenant: Room)
+        fun onDelete(room: Room)
+        fun onEdit(room: Room)
+        fun onItemClick(room: Room)
     }
 
     fun setOnRoomClick(roomCallBacks: RoomCallBacks?) {

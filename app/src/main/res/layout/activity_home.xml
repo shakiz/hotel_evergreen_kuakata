@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -48,7 +49,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Room Summary (Today)"
+                        android:text="@string/room_summary_today"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/md_black_1000"
@@ -73,8 +74,8 @@
                             android:id="@+id/tvBookedRooms"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Booked: 0"
-                            android:textSize="16sp"
+                            tools:text="Booked: 0"
+                            android:textSize="18sp"
                             android:textColor="@color/md_black_1000"
                             app:layout_constraintStart_toEndOf="@id/ivBookedIcon"
                             app:layout_constraintTop_toTopOf="@id/ivBookedIcon"
@@ -97,8 +98,8 @@
                             android:id="@+id/tvAvailableRooms"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Available: 0"
-                            android:textSize="16sp"
+                            tools:text="Available: 0"
+                            android:textSize="18sp"
                             android:textColor="@color/md_black_1000"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@id/ivAvailableIcon"
@@ -118,7 +119,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Earnings"
+                        android:text="@string/all_earnings"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/md_black_1000"
@@ -132,9 +133,10 @@
                             android:id="@+id/tvDailyEarnings"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Today: ৳0"
-                            android:textSize="16sp"
-                            android:textColor="@color/colorPrimary"
+                            android:text="@string/today_x"
+                            android:textSize="18sp"
+                            app:drawableEndCompat="@drawable/ic_currency_bdt"
+                            android:textColor="@color/md_black_1000"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -142,9 +144,10 @@
                             android:id="@+id/tvMonthlyEarnings"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="This Month: ৳0"
-                            android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryDark"
+                            app:drawableEndCompat="@drawable/ic_currency_bdt"
+                            android:text="@string/this_month_x"
+                            android:textSize="18sp"
+                            android:textColor="@color/md_black_1000"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@id/tvDailyEarnings" />
 

@@ -13,6 +13,15 @@ import java.util.Locale
 
 class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
     private var bookingList: List<BookingInfo> = mutableListOf()
+    private var bookingCallbacks: BookingCallbacks? = null
+
+    interface BookingCallbacks {
+        fun onItemClick(bookingInfo: BookingInfo)
+    }
+
+    fun setOnBookingClick(bookingCallbacks: BookingCallbacks) {
+        this.bookingCallbacks = bookingCallbacks
+    }
 
     fun setItems(list: List<BookingInfo>) {
         this.bookingList = list
@@ -23,13 +32,17 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() 
         RecyclerView.ViewHolder(binding.root) {
         fun bind(bookingInfo: BookingInfo) {
             val context = binding.root.context
-            binding.tvRoomId.text = context.getString(R.string.room_x)
+            binding.tvRoomId.text = context.getString(R.string.room_x, bookingInfo.roomName)
             binding.tvCustomerName.text =
                 context.getString(R.string.customer_name_x, bookingInfo.customerName)
             binding.tvDate.text =
                 context.getString(R.string.date_x, getFormattedDate(bookingInfo.createdAt))
             binding.tvPhone.text = context.getString(R.string.phone_x, bookingInfo.phone)
             binding.tvNID.text = context.getString(R.string.nid_x, bookingInfo.customerNid)
+
+            binding.root.setOnClickListener {
+                bookingCallbacks?.onItemClick(bookingInfo)
+            }
         }
     }
 

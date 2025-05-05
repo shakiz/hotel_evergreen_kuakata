@@ -76,6 +76,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         initListeners()
         initObservers()
         viewModel.fetchBookingsForDate(tools.getTodayDate())
+        viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
     }
 
     private fun init() {
@@ -123,7 +124,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.roomsWithAvailability.collect { availableRooms ->
-                        activityMainBinding.tvBookedRooms.text = getString(R.string.available_x, availableRooms.size)
+                        activityMainBinding.tvAvailableRooms.text = getString(R.string.available_x, availableRooms.size)
                     }
                 }
 
