@@ -195,6 +195,22 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
+
+        activityBinding.bookingStatus.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    val item = parent.getItemAtPosition(position).toString()
+                    booking.referredById =
+                        viewModel.allUsers.value.first { it.name == item }.userId
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
     }
 
     private fun initObservers() {
