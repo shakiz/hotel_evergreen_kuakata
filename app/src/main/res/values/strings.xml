@@ -622,4 +622,7 @@
     <string name="room_summary_today">Room Summary (Today)</string>
     <string name="today_x">Today: %d</string>
     <string name="this_month_x">This Month: %d</string>
+    <string name="booking_money">Booking Money</string>
+    <string name="enter_booking_money">Enter Booking Money</string>
+    <string name="booking_money_validation">Please Enter Booking Amount</string>
 </resources>

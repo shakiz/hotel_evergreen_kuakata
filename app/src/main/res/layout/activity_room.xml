@@ -79,6 +79,8 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/enter_room_rent"
+                    app:drawableStartCompat="@drawable/ic_currency_bdt"
+                    android:drawablePadding="4dp"
                     android:inputType="number"
                     android:maxLines="1"
                     android:ellipsize="end"

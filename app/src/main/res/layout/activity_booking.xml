@@ -77,6 +77,7 @@
                     android:ellipsize="end"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
+                    app:drawableStartCompat="@drawable/ic_person"
                     android:textColorHint="@color/md_grey_500"
                     android:textColor="@color/md_black_1000"/>
 
@@ -86,6 +87,7 @@
                     android:layout_marginTop="12dp"
                     android:text="@string/customer_nid"
                     app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:drawablePadding="4dp"
                     android:textColor="@color/md_grey_900"
                     android:textSize="16sp" />
 
@@ -96,6 +98,8 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/enter_customer_nid"
+                    app:drawableStartCompat="@drawable/ic_id_no"
+                    android:drawablePadding="4dp"
                     android:inputType="number"
                     android:maxLines="1"
                     android:ellipsize="end"
@@ -121,6 +125,34 @@
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/enter_customer_phone_no"
                     android:inputType="phone"
+                    app:drawableStartCompat="@drawable/ic_phone"
+                    android:drawablePadding="4dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textColorHint="@color/md_grey_500"
+                    android:textColor="@color/md_black_1000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/booking_money"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etBookingMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/edit_text_back"
+                    android:hint="@string/enter_booking_money"
+                    app:drawableStartCompat="@drawable/ic_currency_bdt"
+                    android:drawablePadding="4dp"
+                    android:inputType="phone"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:paddingStart="8dp"
@@ -144,6 +176,8 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/select_checkin_date"
+                    app:drawableStartCompat="@drawable/ic_date_range"
+                    android:drawablePadding="4dp"
                     android:inputType="date"
                     android:focusable="false"
                     android:maxLines="1"
@@ -168,6 +202,8 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_back"
                     android:hint="@string/select_checkout_date"
+                    app:drawableStartCompat="@drawable/ic_date_range"
+                    android:drawablePadding="4dp"
                     android:inputType="date"
                     android:focusable="false"
                     android:maxLines="1"

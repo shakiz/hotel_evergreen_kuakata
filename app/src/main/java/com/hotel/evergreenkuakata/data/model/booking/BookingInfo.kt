@@ -15,7 +15,8 @@ data class BookingInfo(
     var checkOutDate: String = "",
     var bookingDate: String = "",
     var bookingStatus: String = "",
-    var totalAmount: Int = 0,
+    var pricePerNight: Int = 0,
+    var bookingAdvance: Int = 0,
     var createdAt: Long = System.currentTimeMillis()
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -30,7 +31,8 @@ data class BookingInfo(
         parcel.readString().orEmpty(),
         parcel.readString().orEmpty(),
         parcel.readInt(),
-        parcel.readLong()
+        parcel.readInt(),
+        parcel.readLong(),
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -44,7 +46,8 @@ data class BookingInfo(
         parcel.writeString(checkOutDate)
         parcel.writeString(bookingDate)
         parcel.writeString(bookingStatus)
-        parcel.writeInt(totalAmount)
+        parcel.writeInt(pricePerNight)
+        parcel.writeInt(bookingAdvance)
         parcel.writeLong(createdAt)
     }
 

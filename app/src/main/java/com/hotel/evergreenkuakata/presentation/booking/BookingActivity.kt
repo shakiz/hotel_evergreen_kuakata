@@ -101,12 +101,13 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
 
     private fun bindUiWithComponents() {
         validation.setEditTextIsNotEmpty(
-            arrayOf("etCustomerName", "etNID", "etPhone", "etCheckInDate"),
+            arrayOf("etCustomerName", "etNID", "etPhone", "etCheckInDate", "etBookingMoney"),
             arrayOf(
                 getString(R.string.customer_name_validation),
                 getString(R.string.nid_validation),
                 getString(R.string.phone_no_validation),
                 getString(R.string.checkin_date_validation),
+                getString(R.string.booking_money_validation),
             )
         )
         validation.setSpinnerIsNotEmpty(arrayOf("roomId", "bookingStatus"))
@@ -253,6 +254,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
 
     private fun clearAllUiData() {
         activityBinding.roomId.setSelection(0)
+        activityBinding.bookingStatus.setSelection(0)
         activityBinding.etCustomerName.text.clear()
         activityBinding.etNID.text.clear()
         activityBinding.etPhone.text.clear()
@@ -264,8 +266,9 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         booking.customerName = activityBinding.etCustomerName.text.toString()
         booking.customerNid = activityBinding.etNID.text.toString()
         booking.phone = activityBinding.etPhone.text.toString()
+        booking.bookingAdvance = activityBinding.etBookingMoney.text.toString().toInt()
         booking.bookingDate = tools.getTodayDate()
-        booking.totalAmount = viewModel.getTotalAmountByRoomId(booking.roomId)
+        booking.pricePerNight = viewModel.getTotalAmountByRoomId(booking.roomId)
         ux.getLoadingView()
         if (command == "add") {
             viewModel.bookRoom(booking)

@@ -82,11 +82,11 @@ class HomeViewModel @Inject constructor(
 
                 val todayTotal = _allBookings.value
                     .filter { booking -> booking.createdAt in startOfToday..endOfToday }
-                    .sumOf { booking -> booking.totalAmount }
+                    .sumOf { booking -> booking.pricePerNight }
 
                 val monthTotal = _allBookings.value
                     .filter { booking -> booking.createdAt >= startOfMonth }
-                    .sumOf { booking -> booking.totalAmount }
+                    .sumOf { booking -> booking.pricePerNight }
                 _incomeData.value = IncomeInfo(thisMonth = monthTotal, today = todayTotal)
             }.onFailure {
                 _allBookings.value = emptyList()
