@@ -38,7 +38,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     private var spinnerAdapter = SpinnerAdapter()
     private var spinnerData = SpinnerData(this)
     private val hashMap: Map<String?, Array<String>?> = HashMap()
-    private lateinit var validation : Validation
+    private lateinit var validation: Validation
     private lateinit var ux: UX
 
     @Inject
@@ -71,7 +71,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         activityBinding = dataBinding
     }
 
-    private fun init(){
+    private fun init() {
         validation = Validation(this, hashMap)
         ux = UX(this)
     }
@@ -107,7 +107,6 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                 getString(R.string.nid_validation),
                 getString(R.string.phone_no_validation),
                 getString(R.string.checkin_date_validation),
-                getString(R.string.checkout_date_validation),
             )
         )
         validation.setSpinnerIsNotEmpty(arrayOf("roomId", "bookingStatus"))
@@ -266,6 +265,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         booking.customerNid = activityBinding.etNID.text.toString()
         booking.phone = activityBinding.etPhone.text.toString()
         booking.bookingDate = tools.getTodayDate()
+        booking.totalAmount = viewModel.getTotalAmountByRoomId(booking.roomId)
         ux.getLoadingView()
         if (command == "add") {
             viewModel.bookRoom(booking)

@@ -43,6 +43,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
 
     @Inject
     lateinit var prefManager: PrefManager
+
     @Inject
     lateinit var tools: Tools
     private lateinit var utilsForAll: UtilsForAll
@@ -77,6 +78,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         initObservers()
         viewModel.fetchBookingsForDate(tools.getTodayDate())
         viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
+        viewModel.fetchAllBookings(tools.getTodayDate())
     }
 
     private fun init() {
@@ -124,13 +126,24 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.roomsWithAvailability.collect { availableRooms ->
-                        activityMainBinding.tvAvailableRooms.text = getString(R.string.available_x, availableRooms.size)
+                        activityMainBinding.tvAvailableRooms.text =
+                            getString(R.string.available_x, availableRooms.size)
                     }
                 }
 
                 launch {
                     viewModel.bookingsForDate.collect { bookings ->
-                        activityMainBinding.tvBookedRooms.text = getString(R.string.booked_x, bookings.size)
+                        activityMainBinding.tvBookedRooms.text =
+                            getString(R.string.booked_x, bookings.size)
+                    }
+                }
+
+                launch {
+                    viewModel.incomeData.collect { incomeInfo ->
+                        activityMainBinding.tvDailyEarnings.text =
+                            getString(R.string.today_x, incomeInfo.today)
+                        activityMainBinding.tvMonthlyEarnings.text =
+                            getString(R.string.this_month_x, incomeInfo.thisMonth)
                     }
                 }
             }

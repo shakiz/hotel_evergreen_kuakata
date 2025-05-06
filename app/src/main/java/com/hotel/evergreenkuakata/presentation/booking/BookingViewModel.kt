@@ -84,4 +84,9 @@ class BookingViewModel @Inject constructor(
             // fetchBookingsForDate(...)
         }
     }
+
+    fun getTotalAmountByRoomId(roomId: String): Int{
+        val matchedAvailableRoom = roomsWithAvailability.value.first { it.room.roomId == roomId }
+        return matchedAvailableRoom.room.pricePerNight
+    }
 }
