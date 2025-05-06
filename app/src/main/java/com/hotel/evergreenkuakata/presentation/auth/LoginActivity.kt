@@ -91,7 +91,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                         ux.removeLoadingView()
                         Toast.makeText(
                             this@LoginActivity,
-                            "Error: ${state.message}",
+                            "Login Error: ${state.message}",
                             Toast.LENGTH_SHORT
                         ).show()
                     }

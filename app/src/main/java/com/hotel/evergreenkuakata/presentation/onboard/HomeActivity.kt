@@ -78,7 +78,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         initObservers()
         viewModel.fetchBookingsForDate(tools.getTodayDate())
         viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
-        viewModel.fetchAllBookings(tools.getTodayDate())
+        viewModel.fetchAllBookings()
     }
 
     private fun init() {
@@ -207,6 +207,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
                     },
                     onSecondaryAction = {
                         viewModel.logout()
+                        tools.clearPrefForLogout(HomeActivity::class.java, prefManager)
                     }
                 )
                 bottomSheet.show()

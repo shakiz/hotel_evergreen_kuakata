@@ -49,7 +49,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun fetchAllBookings(date: String) {
+    fun fetchAllBookings() {
         viewModelScope.launch {
             val result = bookingRepositoryImpl.getAllBookings()
             result.onSuccess {
@@ -81,12 +81,12 @@ class HomeViewModel @Inject constructor(
                 }.timeInMillis
 
                 val todayTotal = _allBookings.value
-                    .filter { it.createdAt in startOfToday..endOfToday }
-                    .sumOf { it.totalAmount }
+                    .filter { booking -> booking.createdAt in startOfToday..endOfToday }
+                    .sumOf { booking -> booking.totalAmount }
 
                 val monthTotal = _allBookings.value
-                    .filter { it.createdAt >= startOfMonth }
-                    .sumOf { it.totalAmount }
+                    .filter { booking -> booking.createdAt >= startOfMonth }
+                    .sumOf { booking -> booking.totalAmount }
                 _incomeData.value = IncomeInfo(thisMonth = monthTotal, today = todayTotal)
             }.onFailure {
                 _allBookings.value = emptyList()

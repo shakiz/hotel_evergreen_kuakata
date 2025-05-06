@@ -52,12 +52,12 @@
                         android:text="@string/room_summary_today"
                         android:textStyle="bold"
                         android:textSize="18sp"
-                        android:textColor="@color/md_black_1000"
-                        android:paddingBottom="12dp" />
+                        android:textColor="@color/md_black_1000" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
 
                         <ImageView
                             android:id="@+id/ivBookedIcon"
@@ -122,12 +122,12 @@
                         android:text="@string/all_earnings"
                         android:textStyle="bold"
                         android:textSize="18sp"
-                        android:textColor="@color/md_black_1000"
-                        android:paddingBottom="12dp" />
+                        android:textColor="@color/md_black_1000" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
 
                         <TextView
                             android:id="@+id/tvDailyEarnings"
