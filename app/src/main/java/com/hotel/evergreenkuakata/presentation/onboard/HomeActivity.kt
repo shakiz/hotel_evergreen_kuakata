@@ -77,8 +77,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         initListeners()
         initObservers()
         viewModel.fetchBookingsForDate(tools.getTodayDate())
-        viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
         viewModel.fetchAllBookings()
+        viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
     }
 
     private fun init() {

@@ -624,4 +624,5 @@
     <string name="booking_money">Booking Money</string>
     <string name="enter_booking_money">Enter Booking Money</string>
     <string name="booking_money_validation">Please Enter Booking Amount</string>
+    <string name="referred_by">Referred By</string>
 </resources>

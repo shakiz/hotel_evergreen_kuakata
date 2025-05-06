@@ -59,6 +59,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/referred_by"
+                    app:drawableEndCompat="@drawable/ic_mandatory"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/referredById"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/edit_text_back"
+                    android:tag="@string/select_room" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/customer_name"
                     app:drawableEndCompat="@drawable/ic_mandatory"

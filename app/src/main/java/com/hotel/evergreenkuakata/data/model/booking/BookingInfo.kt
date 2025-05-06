@@ -17,6 +17,7 @@ data class BookingInfo(
     var bookingStatus: String = "",
     var pricePerNight: Int = 0,
     var bookingAdvance: Int = 0,
+    var referredById: Int = 0,
     var createdAt: Long = System.currentTimeMillis()
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -30,6 +31,7 @@ data class BookingInfo(
         parcel.readString().orEmpty(),
         parcel.readString().orEmpty(),
         parcel.readString().orEmpty(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readLong(),
@@ -48,6 +50,7 @@ data class BookingInfo(
         parcel.writeString(bookingStatus)
         parcel.writeInt(pricePerNight)
         parcel.writeInt(bookingAdvance)
+        parcel.writeInt(referredById)
         parcel.writeLong(createdAt)
     }
 

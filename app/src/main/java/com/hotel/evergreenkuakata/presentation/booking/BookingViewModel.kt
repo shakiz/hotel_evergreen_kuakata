@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hotel.evergreenkuakata.data.model.booking.BookingInfo
 import com.hotel.evergreenkuakata.data.model.booking.RoomWithStatus
+import com.hotel.evergreenkuakata.data.model.user.UserInfo
 import com.hotel.evergreenkuakata.data.repository.BookingRepositoryImpl
 import com.hotel.evergreenkuakata.data.repository.RoomRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,6 +28,9 @@ class BookingViewModel @Inject constructor(
     private val _bookingsForDate = MutableStateFlow<List<BookingInfo>>(emptyList())
     val bookingsForDate: StateFlow<List<BookingInfo>> = _bookingsForDate
 
+    private val _allUsers = MutableStateFlow<List<UserInfo>>(emptyList())
+    val allUsers: StateFlow<List<UserInfo>> = _allUsers
+
     private val _roomsWithAvailability = MutableStateFlow<List<RoomWithStatus>>(emptyList())
     val roomsWithAvailability: StateFlow<List<RoomWithStatus>> = _roomsWithAvailability
 
@@ -37,6 +41,17 @@ class BookingViewModel @Inject constructor(
                 _allBookings.value = it
             }.onFailure {
                 _allBookings.value = emptyList()
+            }
+        }
+    }
+
+    fun fetchAllUsers() {
+        viewModelScope.launch {
+            val result = bookingRepository.getAllUsers()
+            result.onSuccess {
+                _allUsers.value = it
+            }.onFailure {
+                _allUsers.value = emptyList()
             }
         }
     }

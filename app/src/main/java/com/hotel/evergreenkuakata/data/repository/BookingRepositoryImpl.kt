@@ -2,6 +2,7 @@ package com.hotel.evergreenkuakata.data.repository
 
 import com.google.firebase.database.FirebaseDatabase
 import com.hotel.evergreenkuakata.data.model.booking.BookingInfo
+import com.hotel.evergreenkuakata.data.model.user.UserInfo
 import com.hotel.evergreenkuakata.domain.user.BookingRepo
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
@@ -12,6 +13,7 @@ class BookingRepositoryImpl @Inject constructor(
 ) : BookingRepo {
 
     private val bookingsRef = database.getReference("bookings")
+    private val usersRef = database.getReference("users")
 
     override suspend fun getAllBookings(): Result<List<BookingInfo>> =
         suspendCancellableCoroutine { cont ->
@@ -63,5 +65,17 @@ class BookingRepositoryImpl @Inject constructor(
             bookingsRef.child(booking.bookingId).setValue(booking)
                 .addOnSuccessListener { cont.resume(Result.success(Unit)) }
                 .addOnFailureListener { cont.resume(Result.failure(it)) }
+        }
+
+    override suspend fun getAllUsers(): Result<List<UserInfo>> =
+        suspendCancellableCoroutine { cont ->
+            usersRef.get().addOnSuccessListener { snapshot ->
+                val users = snapshot.children.mapNotNull { snap ->
+                    snap.getValue(UserInfo::class.java)
+                }
+                cont.resume(Result.success(users))
+            }.addOnFailureListener {
+                cont.resume(Result.failure(it))
+            }
         }
 }

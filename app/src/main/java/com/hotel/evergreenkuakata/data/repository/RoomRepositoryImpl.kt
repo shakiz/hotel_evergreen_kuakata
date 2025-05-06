@@ -49,12 +49,8 @@ class RoomRepositoryImpl @Inject constructor(
                         if (bookingDate != date) roomId else null
                     }
 
-                    if (bookedRoomIds.isEmpty()){
-                        cont.resume(Result.success(emptyList()))
-                    } else {
-                        val result = rooms.map { RoomWithStatus(it, it.roomId !in bookedRoomIds) }
-                        cont.resume(Result.success(result))
-                    }
+                    val result = rooms.map { RoomWithStatus(it, it.roomId !in bookedRoomIds) }
+                    cont.resume(Result.success(result))
                 }.addOnFailureListener {
                     cont.resume(Result.failure(it))
                 }

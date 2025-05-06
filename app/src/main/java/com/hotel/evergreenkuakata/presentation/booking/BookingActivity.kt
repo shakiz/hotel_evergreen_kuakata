@@ -65,6 +65,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
         initObservers()
 
         viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
+        viewModel.fetchAllUsers()
     }
 
     override fun setVariables(dataBinding: ActivityBookingBinding) {
@@ -110,7 +111,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                 getString(R.string.booking_money_validation),
             )
         )
-        validation.setSpinnerIsNotEmpty(arrayOf("roomId", "bookingStatus"))
+        validation.setSpinnerIsNotEmpty(arrayOf("roomId", "bookingStatus", "referredById"))
 
         spinnerAdapter.setSpinnerAdapter(
             activityBinding.roomId,
@@ -212,6 +213,25 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                             val selectedIndex =
                                 viewModel.roomsWithAvailability.value.indexOfFirst { it.room.name == booking.roomName }
                             activityBinding.roomId.setSelection(
+                                selectedIndex
+                            )
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.allUsers.collect { userList ->
+                        val rooms = ArrayList(userList.map { it.name })
+                        spinnerAdapter.setSpinnerAdapter(
+                            activityBinding.referredById,
+                            this@BookingActivity,
+                            rooms
+                        )
+
+                        if (booking.referredById > 0) {
+                            val selectedIndex =
+                                viewModel.allUsers.value.indexOfFirst { it.userId == booking.referredById }
+                            activityBinding.referredById.setSelection(
                                 selectedIndex
                             )
                         }

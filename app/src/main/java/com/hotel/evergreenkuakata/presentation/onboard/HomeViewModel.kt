@@ -49,6 +49,17 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun fetchAllRooms() {
+        viewModelScope.launch {
+            val result = roomRepositoryImpl.getAllRooms()
+            result.onSuccess {
+                _allRooms.value = it
+            }.onFailure {
+                _allRooms.value = emptyList()
+            }
+        }
+    }
+
     fun fetchAllBookings() {
         viewModelScope.launch {
             val result = bookingRepositoryImpl.getAllBookings()
