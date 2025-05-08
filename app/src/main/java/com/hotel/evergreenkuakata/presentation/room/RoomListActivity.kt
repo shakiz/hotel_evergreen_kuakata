@@ -1,7 +1,12 @@
 package com.hotel.evergreenkuakata.presentation.room
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.RelativeLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -79,7 +84,7 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
     }
 
     override fun onDelete(room: Room) {
-
+        doPopUpForDeleteConfirmation(room)
     }
 
     override fun onEdit(room: Room) {
@@ -93,5 +98,29 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
                 RoomActivity::class.java
             ).putExtra("room", room)
         )
+    }
+
+    private fun doPopUpForDeleteConfirmation(room: Room) {
+        val cancel: Button
+        val delete: Button
+        val dialog = Dialog(this@RoomListActivity, android.R.style.Theme_Dialog)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.delete_confirmation_layout)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCanceledOnTouchOutside(true)
+        cancel = dialog.findViewById(R.id.cancelButton)
+        delete = dialog.findViewById(R.id.deleteButton)
+        cancel.setOnClickListener { dialog.dismiss() }
+        delete.setOnClickListener {
+            viewModel.deleteRoom(roomId = room.roomId)
+            dialog.dismiss()
+        }
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        dialog.window?.setLayout(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        dialog.show()
     }
 }

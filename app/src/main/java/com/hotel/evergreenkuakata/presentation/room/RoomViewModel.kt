@@ -29,6 +29,9 @@ class RoomViewModel @Inject constructor(
     private val _updateRoomStatus = MutableStateFlow<Result<Unit>?>(null)
     val updateRoomStatus: StateFlow<Result<Unit>?> = _updateRoomStatus
 
+    private val _deleteRoomStatus = MutableStateFlow<Result<Unit>?>(null)
+    val deleteRoomStatus: StateFlow<Result<Unit>?> = _deleteRoomStatus
+
     fun fetchRoomsWithAvailability(date: String) {
         viewModelScope.launch {
             val result = roomRepository.getRoomsWithAvailability(date)
@@ -60,8 +63,9 @@ class RoomViewModel @Inject constructor(
 
     fun deleteRoom(roomId: String) {
         viewModelScope.launch {
-            roomRepository.deleteRoom(roomId)
-            fetchAllRooms() // refresh after deletion
+            val result = roomRepository.deleteRoom(roomId)
+            _deleteRoomStatus.value = result
+            fetchAllRooms()
         }
     }
 

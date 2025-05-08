@@ -65,6 +65,10 @@ class RoomAdapter : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
             binding.root.setOnClickListener {
                 roomCallBacks?.onItemClick(room)
             }
+
+            binding.ivDelete.setOnClickListener {
+                roomCallBacks?.onDelete(room)
+            }
         }
     }
 

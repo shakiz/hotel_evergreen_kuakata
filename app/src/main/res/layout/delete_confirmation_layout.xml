@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/md_white_1000"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="false">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/logoutConfirmationText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/delete_confirmation"
+            android:textColor="@color/md_grey_800"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/logoutSadText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logoutConfirmationText"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/delete_detail_text"
+            android:textColor="@color/md_green_800"
+            android:textSize="14sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logoutSadText"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancelButton"
+                style="@style/AppTheme.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/md_green_800"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/deleteButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                style="@style/AppTheme.Button.Primary"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/rectangle_light_red"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/delete"
+                android:textAllCaps="false"
+                android:textColor="@color/md_white_1000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cancelButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
