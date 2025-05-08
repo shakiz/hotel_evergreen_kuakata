@@ -25,6 +25,7 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
+            setResult(RESULT_OK)
             finish()
         }
     }
@@ -53,6 +54,7 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
     private fun initListeners() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
         activityBinding.toolBar.setNavigationOnClickListener {
+            setResult(RESULT_OK)
             finish()
         }
     }

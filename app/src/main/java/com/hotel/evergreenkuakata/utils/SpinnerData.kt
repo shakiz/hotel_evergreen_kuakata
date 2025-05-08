@@ -94,9 +94,9 @@ class SpinnerData(private val context: Context) {
 
     fun getRoomCategoryTextDataById(roomType: Int): String {
         return when (roomType) {
-            0 -> context.getString(R.string.couple_bed)
-            1 -> context.getString(R.string.double_bed)
-            2 -> context.getString(R.string.three_bed)
+            1 -> context.getString(R.string.couple_bed)
+            2 -> context.getString(R.string.double_bed)
+            3 -> context.getString(R.string.three_bed)
             else -> ""
         }
     }
@@ -149,9 +149,9 @@ class SpinnerData(private val context: Context) {
 
     fun getBookingStatusTextDataById(bookingStatus: Int): String {
         return when (bookingStatus) {
-            0 -> context.getString(R.string.active)
-            1 -> context.getString(R.string.checked_in)
-            2 -> context.getString(R.string.checked_out)
+            1 -> context.getString(R.string.active)
+            2 -> context.getString(R.string.checked_in)
+            3 -> context.getString(R.string.checked_out)
             else -> context.getString(R.string.cancelled)
         }
     }

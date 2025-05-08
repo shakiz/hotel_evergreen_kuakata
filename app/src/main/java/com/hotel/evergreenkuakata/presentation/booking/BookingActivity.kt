@@ -47,6 +47,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
+            setResult(RESULT_OK)
             finish()
         }
     }
@@ -91,12 +92,14 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     private fun loadData() {
         if (booking.bookingId.isNotEmpty()) {
             command = "update"
+            activityBinding.btnBook.text = getString(R.string.update)
             activityBinding.etCustomerName.setText(booking.customerName)
             activityBinding.etNID.setText(booking.customerNid)
             activityBinding.etPhone.setText(booking.phone)
+            activityBinding.etBookingMoney.setText("${booking.bookingAdvance}")
             activityBinding.etCheckInDate.setText(booking.checkInDate)
             activityBinding.etCheckOutDate.setText(booking.checkOutDate)
-            activityBinding.etCheckOutDate.setText(spinnerData.getBookingStatusDataByName(booking.bookingStatus))
+            activityBinding.bookingStatus.setSelection(spinnerData.getBookingStatusDataByName(booking.bookingStatus))
         }
     }
 
@@ -129,6 +132,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
     private fun initListeners() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
         activityBinding.toolBar.setNavigationOnClickListener {
+            setResult(RESULT_OK)
             finish()
         }
 
@@ -173,9 +177,11 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                     id: Long
                 ) {
                     val item = parent.getItemAtPosition(position).toString()
-                    booking.roomName = item
-                    booking.roomId =
-                        viewModel.roomsWithAvailability.value.first { it.room.name == item }.room.roomId
+                    if (item != getString(R.string.select_data_1)){
+                        booking.roomName = item
+                        booking.roomId =
+                            viewModel.roomsWithAvailability.value.first { it.room.name == item }.room.roomId
+                    }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -196,7 +202,7 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
-        activityBinding.bookingStatus.onItemSelectedListener =
+        activityBinding.referredById.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>,
@@ -260,6 +266,20 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                             ux.removeLoadingView()
                             doPopupForSuccess()
                             clearAllUiData()
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.updateBookingStatus.collect { bookingStatus ->
+                        if (bookingStatus?.isSuccess.orFalse()) {
+                            ux.removeLoadingView()
+                            Toast.makeText(
+                                this@BookingActivity,
+                                getString(R.string.updated_successfully),
+                                Toast.LENGTH_LONG
+                            ).show()
+                            finish()
                         }
                     }
                 }

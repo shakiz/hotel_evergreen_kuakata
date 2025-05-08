@@ -311,7 +311,7 @@ class Tools(private val context: Context) {
 
     fun getTodayDate(): String{
         val c: Date = Calendar.getInstance().time
-        val df = SimpleDateFormat(APP_DATE_FORMAT, Locale.getDefault())
+        val df = SimpleDateFormat(APP_DATE_FORMAT, Locale.ENGLISH)
         val formattedDate: String = df.format(c)
         return formattedDate
     }

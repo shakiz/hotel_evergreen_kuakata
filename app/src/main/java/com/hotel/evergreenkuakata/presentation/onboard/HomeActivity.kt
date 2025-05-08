@@ -1,6 +1,7 @@
 package com.hotel.evergreenkuakata.presentation.onboard
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,6 +12,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -50,6 +53,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
     private lateinit var ux: UX
     private val viewModel by viewModels<HomeViewModel>()
     private var languageMap = HashMap<String, String>()
+    private lateinit var activityLauncher: ActivityResultLauncher<Intent>
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -105,19 +109,19 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         activityMainBinding.addRoom.setOnClickListener {
-            startActivity(Intent(this, RoomActivity::class.java))
+            activityLauncher.launch(Intent(this, RoomActivity::class.java))
         }
 
         activityMainBinding.roomList.setOnClickListener {
-            startActivity(Intent(this, RoomListActivity::class.java))
+            activityLauncher.launch(Intent(this, RoomListActivity::class.java))
         }
 
         activityMainBinding.addBooking.setOnClickListener {
-            startActivity(Intent(this, BookingActivity::class.java))
+            activityLauncher.launch(Intent(this, BookingActivity::class.java))
         }
 
         activityMainBinding.bookingList.setOnClickListener {
-            startActivity(Intent(this, BookingListActivity::class.java))
+            activityLauncher.launch(Intent(this, BookingListActivity::class.java))
         }
     }
 
@@ -151,6 +155,17 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
     }
 
     private fun bindUIWithComponents() {
+        activityLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                viewModel.fetchBookingsForDate(tools.getTodayDate())
+                viewModel.fetchAllBookings()
+                viewModel.fetchRoomsWithAvailability(tools.getTodayDate())
+            }
+        }
+
+
         if (Build.VERSION.SDK_INT > 32) {
             if (ContextCompat.checkSelfPermission(
                     this@HomeActivity,

@@ -34,6 +34,9 @@ class BookingViewModel @Inject constructor(
     private val _roomsWithAvailability = MutableStateFlow<List<RoomWithStatus>>(emptyList())
     val roomsWithAvailability: StateFlow<List<RoomWithStatus>> = _roomsWithAvailability
 
+    private val _updateBookingStatus = MutableStateFlow<Result<Unit>?>(null)
+    val updateBookingStatus: StateFlow<Result<Unit>?> = _updateBookingStatus
+
     fun fetchAllBookings() {
         viewModelScope.launch {
             val result = bookingRepository.getAllBookings()
@@ -87,8 +90,8 @@ class BookingViewModel @Inject constructor(
 
     fun updateBooking(booking: BookingInfo) {
         viewModelScope.launch {
-            bookingRepository.updateBooking(booking)
-            fetchAllBookings()
+            val result = bookingRepository.updateBooking(booking)
+            _updateBookingStatus.value = result
         }
     }
 

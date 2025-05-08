@@ -46,6 +46,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
+            setResult(RESULT_OK)
             finish()
         }
     }
@@ -68,7 +69,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
         activityBinding = dataBinding
     }
 
-    private fun init(){
+    private fun init() {
         validation = Validation(this, hashMap)
         ux = UX(this)
     }
@@ -87,8 +88,9 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     private fun loadData() {
         if (room.roomId.isNotEmpty()) {
             command = "update"
+            activityBinding.btnSave.text = getString(R.string.update)
             activityBinding.etName.setText(room.name)
-            activityBinding.etPrice.setText(room.pricePerNight)
+            activityBinding.etPrice.setText("${room.pricePerNight}")
             activityBinding.roomType.setSelection(room.roomCategoryId)
         }
     }
@@ -112,6 +114,7 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
     private fun initListeners() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
         activityBinding.toolBar.setNavigationOnClickListener {
+            setResult(RESULT_OK)
             finish()
         }
 
@@ -151,11 +154,25 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    viewModel.addRoomStatus.collect { bookingStatus ->
-                        if (bookingStatus?.isSuccess.orFalse()) {
+                    viewModel.addRoomStatus.collect { roomStatus ->
+                        if (roomStatus?.isSuccess.orFalse()) {
                             ux.removeLoadingView()
                             doPopupForSuccess()
                             clearAllUiData()
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.updateRoomStatus.collect { roomStatus ->
+                        if (roomStatus?.isSuccess.orFalse()) {
+                            ux.removeLoadingView()
+                            Toast.makeText(
+                                this@RoomActivity,
+                                getString(R.string.updated_successfully),
+                                Toast.LENGTH_LONG
+                            ).show()
+                            finish()
                         }
                     }
                 }

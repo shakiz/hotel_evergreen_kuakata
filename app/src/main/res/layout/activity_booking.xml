@@ -29,8 +29,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
+            android:id="@+id/scrollLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/btnBook"
             android:layout_below="@id/app_bar">
 
             <LinearLayout
@@ -248,17 +250,18 @@
                     android:background="@drawable/edit_text_back"
                     android:tag="@string/select_booking_status" />
 
-                <Button
-                    android:id="@+id/btnBook"
-                    style="@style/AppTheme.Button.Primary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAllCaps="false"
-                    android:text="@string/book_room"
-                    android:layout_marginTop="24dp" />
-
             </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/btnBook"
+            style="@style/AppTheme.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="false"
+            android:text="@string/book_room"
+            android:layout_margin="16dp" />
 
     </RelativeLayout>
 
