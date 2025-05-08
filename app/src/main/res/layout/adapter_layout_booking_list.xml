@@ -9,16 +9,20 @@
     app:cardUseCompatPadding="false"
     android:foreground="?attr/selectableItemBackground">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/tvRoomId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:maxLines="1"
+            android:ellipsize="end"
             tools:text="Room: Deluxe Room"
             android:textStyle="bold"
             android:textColor="@color/md_black_1000"
@@ -26,34 +30,60 @@
 
         <TextView
             android:id="@+id/tvCustomerName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toStartOf="@id/ivDelete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRoomId"
             tools:text="Name: John Doe"
             android:textColor="@color/md_grey_700"
             android:layout_marginTop="4dp" />
 
         <TextView
             android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCustomerName"
+            app:layout_constraintEnd_toStartOf="@id/ivDelete"
             tools:text="Date: 16-Apr-2025"
             android:textColor="@color/md_grey_700"
             android:layout_marginTop="2dp" />
 
         <TextView
             android:id="@+id/tvPhone"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDate"
+            app:layout_constraintEnd_toStartOf="@id/ivDelete"
             tools:text="Phone: 017XXXXXXXX"
             android:textColor="@color/md_grey_700"
             android:layout_marginTop="2dp" />
 
         <TextView
             android:id="@+id/tvNID"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPhone"
+            app:layout_constraintEnd_toStartOf="@id/ivDelete"
             tools:text="NID: 1234567890"
             android:textColor="@color/md_grey_700"
             android:layout_marginTop="2dp" />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/banner_description"
+            android:src="@drawable/ic_delete_circle_black_24dp"
+            app:tint="@color/colorRed"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

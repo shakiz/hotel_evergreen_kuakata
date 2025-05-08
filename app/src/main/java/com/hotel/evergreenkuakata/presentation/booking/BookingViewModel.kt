@@ -98,8 +98,7 @@ class BookingViewModel @Inject constructor(
     fun deleteBooking(bookingId: String) {
         viewModelScope.launch {
             bookingRepository.deleteBooking(bookingId)
-            // Optionally refresh the bookings list
-            // fetchBookingsForDate(...)
+            fetchAllBookings()
         }
     }
 

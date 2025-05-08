@@ -17,6 +17,7 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() 
 
     interface BookingCallbacks {
         fun onItemClick(bookingInfo: BookingInfo)
+        fun onItemDelete(bookingInfo: BookingInfo)
     }
 
     fun setOnBookingClick(bookingCallbacks: BookingCallbacks) {
@@ -42,6 +43,10 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() 
 
             binding.root.setOnClickListener {
                 bookingCallbacks?.onItemClick(bookingInfo)
+            }
+
+            binding.ivDelete.setOnClickListener {
+                bookingCallbacks?.onItemDelete(bookingInfo)
             }
         }
     }

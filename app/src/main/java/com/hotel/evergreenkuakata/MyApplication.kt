@@ -10,8 +10,8 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val language = LocaleManager.getCurrentLocale(this)
-        LocaleManager.setLocale(this, language)
+//        val language = LocaleManager.getCurrentLocale(this)
+//        LocaleManager.setLocale(this, language)
         FirebaseApp.initializeApp(this)
     }
 }

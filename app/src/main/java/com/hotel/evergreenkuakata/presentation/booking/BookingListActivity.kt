@@ -1,7 +1,12 @@
 package com.hotel.evergreenkuakata.presentation.booking
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.RelativeLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -37,6 +42,7 @@ class BookingListActivity : BaseActivity<ActivityBookingListBinding>(), BookingA
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         initVariables()
+        bindUiWithComponents()
         initListeners()
         setRecyclerAdapter()
         initObservers()
@@ -49,6 +55,10 @@ class BookingListActivity : BaseActivity<ActivityBookingListBinding>(), BookingA
 
     private fun initVariables() {
         spinnerData = SpinnerData(this)
+    }
+
+    private fun bindUiWithComponents(){
+        activityBinding.searchLayout.SearchName.hint = getString(R.string.search_customer_name)
     }
 
     private fun initListeners() {
@@ -81,5 +91,33 @@ class BookingListActivity : BaseActivity<ActivityBookingListBinding>(), BookingA
                 BookingActivity::class.java
             ).putExtra("bookingInfo", bookingInfo)
         )
+    }
+
+    override fun onItemDelete(bookingInfo: BookingInfo) {
+        doPopUpForDeleteConfirmation(bookingInfo)
+    }
+
+    private fun doPopUpForDeleteConfirmation(bookingInfo: BookingInfo) {
+        val cancel: Button
+        val delete: Button
+        val dialog = Dialog(this@BookingListActivity, android.R.style.Theme_Dialog)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.delete_confirmation_layout)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCanceledOnTouchOutside(true)
+        cancel = dialog.findViewById(R.id.cancelButton)
+        delete = dialog.findViewById(R.id.deleteButton)
+        cancel.setOnClickListener { dialog.dismiss() }
+        delete.setOnClickListener {
+            viewModel.deleteBooking(bookingId = bookingInfo.bookingId)
+            dialog.dismiss()
+        }
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        dialog.window?.setLayout(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        dialog.show()
     }
 }

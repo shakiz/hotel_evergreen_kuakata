@@ -68,9 +68,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         activityMainBinding = dataBinding
     }
 
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleManager.applyLocale(newBase))
-    }
+//    override fun attachBaseContext(newBase: Context) {
+//        super.attachBaseContext(LocaleManager.applyLocale(newBase))
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

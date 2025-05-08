@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
         tools.checkLogin(prefManager)
     }
 
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleManager.applyLocale(newBase))
-    }
+//    override fun attachBaseContext(newBase: Context) {
+//        super.attachBaseContext(LocaleManager.applyLocale(newBase))
+//    }
 }

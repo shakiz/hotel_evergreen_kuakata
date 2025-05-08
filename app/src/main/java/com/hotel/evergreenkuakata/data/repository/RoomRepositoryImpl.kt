@@ -46,10 +46,12 @@ class RoomRepositoryImpl @Inject constructor(
                     val bookedRoomIds = bookingSnapshot.children.mapNotNull { snap ->
                         val roomId = snap.child("roomId").getValue<String>()
                         val bookingDate = snap.child("bookingDate").getValue<String>()
-                        if (bookingDate != date) roomId else null
+                        if (bookingDate == date) roomId else null  // <-- corrected
                     }
 
-                    val result = rooms.map { RoomWithStatus(it, it.roomId !in bookedRoomIds) }
+                    val result = rooms
+                        .filter { it.roomId !in bookedRoomIds }
+                        .map { RoomWithStatus(it, true) }
                     cont.resume(Result.success(result))
                 }.addOnFailureListener {
                     cont.resume(Result.failure(it))
@@ -58,6 +60,7 @@ class RoomRepositoryImpl @Inject constructor(
                 cont.resume(Result.failure(it))
             }
         }
+
 
     override suspend fun getAllRooms(): Result<List<Room>> = suspendCancellableCoroutine { cont ->
         roomsRef.get().addOnSuccessListener { snapshot ->

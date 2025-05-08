@@ -42,6 +42,7 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         initVariables()
+        bindUiWithComponents()
         initListeners()
         setRecyclerAdapter()
         initObservers()
@@ -54,6 +55,10 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
 
     private fun initVariables() {
         spinnerData = SpinnerData(this)
+    }
+
+    private fun bindUiWithComponents(){
+        activityBinding.searchLayout.SearchName.hint = getString(R.string.search_room_name)
     }
 
     private fun initListeners() {
