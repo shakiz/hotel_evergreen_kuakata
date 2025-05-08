@@ -7,6 +7,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -18,8 +19,17 @@ import com.hotel.evergreenkuakata.data.model.room.Room
 import com.hotel.evergreenkuakata.databinding.ActivityRoomListBinding
 import com.hotel.evergreenkuakata.presentation.adapter.RoomAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
+import com.hotel.evergreenkuakata.utils.Tools
+import com.hotel.evergreenkuakata.utils.filterList
+import com.hotel.evergreenkuakata.utils.textChanges
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.RoomCallBacks {
@@ -27,6 +37,9 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
     private lateinit var roomAdapter: RoomAdapter
     private val viewModel by viewModels<RoomViewModel>()
     private lateinit var spinnerData: SpinnerData
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    @Inject
+    lateinit var tools: Tools
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -47,6 +60,7 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
         setRecyclerAdapter()
         initObservers()
         viewModel.fetchAllRooms()
+        setupDebouncedSearch()
     }
 
     override fun setVariables(dataBinding: ActivityRoomListBinding) {
@@ -66,6 +80,25 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
         activityBinding.toolBar.setNavigationOnClickListener {
             setResult(RESULT_OK)
             finish()
+        }
+
+        activityBinding.searchLayout.refreshButton.setOnClickListener {
+            if (tools.hasConnection()) {
+                activityBinding.searchLayout.SearchName.setText("")
+                Tools.hideKeyboard(this@RoomListActivity)
+                viewModel.fetchAllRooms()
+                Toast.makeText(
+                    this@RoomListActivity,
+                    getString(R.string.list_refreshed),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    this@RoomListActivity,
+                    getString(R.string.no_internet_title),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
@@ -103,6 +136,21 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
                 RoomActivity::class.java
             ).putExtra("room", room)
         )
+    }
+
+    private fun setupDebouncedSearch() {
+        activityBinding.searchLayout.SearchName.textChanges()
+            .debounce(100)
+            .onEach { query ->
+                val originalList = viewModel.allRooms.value
+                val filteredList =
+                    filterList(query.toString().lowercase(), originalList) { room, q ->
+                        room.name.lowercase().contains(q, ignoreCase = true)
+                    }
+
+                roomAdapter.setItems(filteredList)
+            }
+            .launchIn(coroutineScope)
     }
 
     private fun doPopUpForDeleteConfirmation(room: Room) {
