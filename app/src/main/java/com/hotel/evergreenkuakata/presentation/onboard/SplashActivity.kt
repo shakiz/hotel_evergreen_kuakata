@@ -1,11 +1,9 @@
 package com.hotel.evergreenkuakata.presentation.onboard
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.hotel.evergreenkuakata.R
-import com.hotel.evergreenkuakata.utils.LocaleManager
 import com.hotel.evergreenkuakata.utils.PrefManager
 import com.hotel.evergreenkuakata.utils.Tools
 import dagger.hilt.android.AndroidEntryPoint

@@ -46,7 +46,8 @@ class RoomRepositoryImpl @Inject constructor(
                     val bookedRoomIds = bookingSnapshot.children.mapNotNull { snap ->
                         val roomId = snap.child("roomId").getValue<String>()
                         val bookingDate = snap.child("bookingDate").getValue<String>()
-                        if (bookingDate == date) roomId else null  // <-- corrected
+                        val bookingStatus = snap.child("bookingStatus").getValue<String>()
+                        if (bookingDate == date && bookingStatus != "cancelled" && bookingStatus != "checked_out") roomId else null
                     }
 
                     val result = rooms

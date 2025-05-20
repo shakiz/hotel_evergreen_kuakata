@@ -42,7 +42,7 @@ class BookingRepositoryImpl @Inject constructor(
                 .addOnSuccessListener { snapshot ->
                     val bookings = snapshot.children.mapNotNull { snap ->
                         val booking = snap.getValue(BookingInfo::class.java)
-                        if (booking?.bookingDate == date) {
+                        if (booking?.bookingDate == date && booking.bookingStatus != "cancelled" && booking.bookingStatus != "checked_out") {
                             booking.copy(bookingId = snap.key.orEmpty())
                         } else null
                     }

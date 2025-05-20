@@ -99,7 +99,6 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
             activityBinding.etBookingMoney.setText("${booking.bookingAdvance}")
             activityBinding.etCheckInDate.setText(booking.checkInDate)
             activityBinding.etCheckOutDate.setText(booking.checkOutDate)
-            activityBinding.bookingStatus.setSelection(spinnerData.getBookingStatusDataByName(booking.bookingStatus))
         }
     }
 
@@ -127,6 +126,11 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
             this,
             spinnerData.setBookingStatusData()
         )
+
+        if (booking.bookingId.isNotEmpty()){
+            val bookingStatusPos = spinnerData.getBookingStatusDataByName(booking.bookingStatus)
+            activityBinding.bookingStatus.setSelection(bookingStatusPos)
+        }
     }
 
     private fun initListeners() {
@@ -196,7 +200,13 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                     id: Long
                 ) {
                     val item = parent.getItemAtPosition(position).toString().lowercase()
-                    booking.bookingStatus = item
+                    booking.bookingStatus = when(item){
+                        getString(R.string.active).lowercase() -> "active"
+                        getString(R.string.cancelled).lowercase() -> "cancelled"
+                        getString(R.string.checked_in).lowercase() -> "checked_in"
+                        getString(R.string.checked_out).lowercase() -> "checked_out"
+                        else -> ""
+                    }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}

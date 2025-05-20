@@ -128,10 +128,10 @@ class SpinnerData(private val context: Context) {
     fun setBookingStatusData(): ArrayList<String> {
         val spinnerValues = ArrayList<String>()
         val roomCategoryArray = arrayOf(
-            context.getString(R.string.active),
-            context.getString(R.string.checked_in),
-            context.getString(R.string.checked_out),
-            context.getString(R.string.cancelled)
+            "Active",
+            "Checked In",
+            "Checked Out",
+            "Cancelled"
         )
         spinnerValues.addAll(roomCategoryArray)
         return spinnerValues
@@ -139,10 +139,10 @@ class SpinnerData(private val context: Context) {
 
     fun getBookingStatusDataByName(bookingStatus: String): Int {
         val roomCategoryArray = arrayOf(
-            context.getString(R.string.active),
-            context.getString(R.string.checked_in),
-            context.getString(R.string.checked_out),
-            context.getString(R.string.cancelled)
+            "active",
+            "checked_in",
+            "checked_out",
+            "cancelled"
         )
         return roomCategoryArray.indexOfFirst { it == bookingStatus }
     }
