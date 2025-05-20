@@ -61,6 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="@string/referred_by"
                     app:drawableEndCompat="@drawable/ic_mandatory"
                     android:textColor="@color/md_grey_900"
@@ -78,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/customer_name"
                     app:drawableEndCompat="@drawable/ic_mandatory"
                     android:textColor="@color/md_grey_900"
@@ -103,7 +104,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/customer_nid"
                     app:drawableEndCompat="@drawable/ic_mandatory"
                     android:drawablePadding="4dp"
@@ -130,7 +131,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/customer_phone_no"
                     app:drawableEndCompat="@drawable/ic_mandatory"
                     android:textColor="@color/md_grey_900"
@@ -156,7 +157,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/booking_money"
                     app:drawableEndCompat="@drawable/ic_mandatory"
                     android:textColor="@color/md_grey_900"
@@ -182,7 +183,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/checkin_date"
                     app:drawableEndCompat="@drawable/ic_mandatory"
                     android:textColor="@color/md_grey_900"
@@ -209,7 +210,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/checkout_date"
                     android:textColor="@color/md_grey_900"
                     android:textSize="16sp" />
@@ -236,7 +237,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/select_booking_status"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     app:drawableEndCompat="@drawable/ic_mandatory"
                     android:textColor="@color/md_grey_900"
                     android:textSize="16sp" />

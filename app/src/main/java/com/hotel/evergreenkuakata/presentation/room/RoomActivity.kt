@@ -103,12 +103,12 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
                 ) != "shakil.py@gmail.com"
             ) {
                 activityBinding.btnSave.isEnabled = false
-                activityBinding.btnSave.alpha = 0.6f
                 activityBinding.etName.isEnabled = false
-                activityBinding.etName.alpha = 0.6f
                 activityBinding.etPrice.isEnabled = false
-                activityBinding.etPrice.alpha = 0.6f
                 activityBinding.roomType.isEnabled = false
+                activityBinding.etName.alpha = 0.6f
+                activityBinding.btnSave.alpha = 0.6f
+                activityBinding.etPrice.alpha = 0.6f
                 activityBinding.roomType.alpha = 0.6f
             }
         }
