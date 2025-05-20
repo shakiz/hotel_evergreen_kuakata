@@ -2,7 +2,6 @@ package com.hotel.evergreenkuakata.presentation.onboard
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -47,8 +46,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
     @Inject
     lateinit var prefManager: PrefManager
 
-    @Inject
-    lateinit var tools: Tools
+    private var tools = Tools(this)
     private lateinit var utilsForAll: UtilsForAll
     private lateinit var ux: UX
     private val viewModel by viewModels<HomeViewModel>()
