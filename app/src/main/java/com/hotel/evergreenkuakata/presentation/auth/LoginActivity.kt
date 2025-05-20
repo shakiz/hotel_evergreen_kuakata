@@ -77,6 +77,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                     is AuthState.Loading -> ux.getLoadingView()
                     is AuthState.Success -> {
                         prefManager[Constants.mIsLoggedIn] = true
+                        prefManager[Constants.mUserEmail] = state.user?.email
                         ux.removeLoadingView()
                         Toast.makeText(
                             this@LoginActivity,
@@ -88,6 +89,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
                     is AuthState.Error -> {
                         prefManager[Constants.mIsLoggedIn] = false
+                        prefManager[Constants.mUserEmail] = ""
                         ux.removeLoadingView()
                         Toast.makeText(
                             this@LoginActivity,

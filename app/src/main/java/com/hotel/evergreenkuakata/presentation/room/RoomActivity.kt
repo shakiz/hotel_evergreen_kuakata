@@ -19,6 +19,8 @@ import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
 import com.hotel.evergreenkuakata.data.model.room.Room
 import com.hotel.evergreenkuakata.databinding.ActivityRoomBinding
+import com.hotel.evergreenkuakata.utils.Constants
+import com.hotel.evergreenkuakata.utils.PrefManager
 import com.hotel.evergreenkuakata.utils.SpinnerAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
@@ -42,6 +44,9 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
 
     @Inject
     lateinit var tools: Tools
+
+    @Inject
+    lateinit var prefManager: PrefManager
     private val viewModel by viewModels<RoomViewModel>()
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -92,6 +97,20 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
             activityBinding.etName.setText(room.name)
             activityBinding.etPrice.setText("${room.pricePerNight}")
             activityBinding.roomType.setSelection(room.roomCategoryId)
+
+            if (prefManager.getString(Constants.mUserEmail) != "imamundm@gmail.com" || prefManager.getString(
+                    Constants.mUserEmail
+                ) != "shakil.py@gmail.com"
+            ) {
+                activityBinding.btnSave.isEnabled = false
+                activityBinding.btnSave.alpha = 0.6f
+                activityBinding.etName.isEnabled = false
+                activityBinding.etName.alpha = 0.6f
+                activityBinding.etPrice.isEnabled = false
+                activityBinding.etPrice.alpha = 0.6f
+                activityBinding.roomType.isEnabled = false
+                activityBinding.roomType.alpha = 0.6f
+            }
         }
     }
 
