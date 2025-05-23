@@ -89,6 +89,11 @@
           <theme>@style/AppThemeNoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_room_status.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_slider.xml">
         <config>
           <theme>@style/AppThemeNoActionBar</theme>
@@ -239,6 +244,11 @@
           <theme>@style/AppThemeNoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/room_status_list_bottom_sheet.xml">
+        <config>
+          <theme>@style/AppThemeNoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/simple_spinner_dropdown_item.xml">
         <config>
           <theme>@style/AppThemeNoActionBar</theme>
@@ -281,11 +291,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2775a39-56bc-4fcb-9460-ef43cd0bd1cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/adapter/RecyclerAdapterRoomStatus.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/onboard/bottomsheets/RoomStatusListBottomSheet.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_layout_room_status.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/room_status_list_bottom_sheet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/auth/AuthViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/auth/AuthViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/auth/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/auth/LoginActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/booking/BookingListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/booking/BookingListActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/RoomActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/RoomActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/onboard/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/onboard/HomeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/onboard/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/onboard/HomeViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/RoomListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotel/evergreenkuakata/presentation/room/RoomListActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -396,42 +411,42 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "ApkExportedModule": "Bari_vara.app",
-    "BundleExportedModule": "Bari_vara.app",
-    "DEBUGGABLE_DEVICE": "Pixel_9_API_35 [emulator-5554]",
-    "DEBUGGABLE_PROCESS": "com.hotel.evergreenkuakata",
-    "DEBUGGER_ID": "Auto",
-    "ExportApk.ApkPathForBari_vara.app": "/Users/sakhawat/Shakil/Personal Projects/Barivara/app",
-    "ExportBundle.BundlePathForBari_vara.app": "/Users/sakhawat/Shakil/Personal Projects/Barivara/app",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Gradle.hotelevergreenkuakata [assemble].executor": "Run",
-    "Gradle.hotelevergreenkuakata [signingReport].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHOW_ALL_PROCESSES": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/sakhawat/Shakil/Personal Projects/hotel_evergreen_kuakata/app/src/main/res",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;Bari_vara.app&quot;,
+    &quot;BundleExportedModule&quot;: &quot;Bari_vara.app&quot;,
+    &quot;DEBUGGABLE_DEVICE&quot;: &quot;Pixel_9_API_35 [emulator-5554]&quot;,
+    &quot;DEBUGGABLE_PROCESS&quot;: &quot;com.hotel.evergreenkuakata&quot;,
+    &quot;DEBUGGER_ID&quot;: &quot;Auto&quot;,
+    &quot;ExportApk.ApkPathForBari_vara.app&quot;: &quot;/Users/sakhawat/Shakil/Personal Projects/Barivara/app&quot;,
+    &quot;ExportBundle.BundlePathForBari_vara.app&quot;: &quot;/Users/sakhawat/Shakil/Personal Projects/Barivara/app&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.hotelevergreenkuakata [assemble].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.hotelevergreenkuakata [signingReport].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHOW_ALL_PROCESSES&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sakhawat/Shakil/Personal Projects/hotel_evergreen_kuakata/app/src/main/res&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
@@ -459,11 +474,11 @@
       <recent name="com.hotel.evergreenkuakata.presentation.room" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.hotel.evergreenkuakata.presentation.adapter" />
+      <recent name="com.hotel.evergreenkuakata.presentation.onboard.bottomsheets" />
       <recent name="com.hotel.evergreenkuakata.data.repository" />
       <recent name="com.hotel.evergreenkuakata.domain.user" />
       <recent name="com.hotel.evergreenkuakata.presentation.booking" />
-      <recent name="com.shakil.barivara.presentation.generatebill.bottomsheet" />
-      <recent name="com.shakil.barivara.presentation.tutorial" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -600,22 +615,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1734889165590</updated>
-    </task>
-    <task id="LOCAL-00098" summary="feature(remarks): Add remarks for notify user">
-      <option name="closed" value="true" />
-      <created>1743670092691</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1743670092691</updated>
-    </task>
-    <task id="LOCAL-00099" summary="feature(app-review): Add app review dialog">
-      <option name="closed" value="true" />
-      <created>1743747890578</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1743747890579</updated>
     </task>
     <task id="LOCAL-00100" summary="feature(app-review): Add logics to show review dialog for once in a week">
       <option name="closed" value="true" />
@@ -993,7 +992,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747757257850</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="Make room edit/update permission for admin only">
+      <option name="closed" value="true" />
+      <created>1747762863753</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1747762863753</updated>
+    </task>
+    <task id="LOCAL-00148" summary="Fixed UI issues">
+      <option name="closed" value="true" />
+      <created>1747763151990</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1747763151990</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1011,8 +1026,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Add room viewModel" />
-    <MESSAGE value="Update room and booking data classes" />
     <MESSAGE value="Add room list item adapter" />
     <MESSAGE value="Fixed project manifest and gradle" />
     <MESSAGE value="Remove unused classes and refactor UI" />
@@ -1036,7 +1049,9 @@
     <MESSAGE value="Add new launcher icon" />
     <MESSAGE value="Update room availability logics" />
     <MESSAGE value="Fix home back press issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix home back press issues" />
+    <MESSAGE value="Make room edit/update permission for admin only" />
+    <MESSAGE value="Fixed UI issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed UI issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

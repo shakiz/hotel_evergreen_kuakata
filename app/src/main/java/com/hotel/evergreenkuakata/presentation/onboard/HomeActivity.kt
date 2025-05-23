@@ -21,10 +21,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
+import com.hotel.evergreenkuakata.data.model.room.Room
 import com.hotel.evergreenkuakata.databinding.ActivityHomeBinding
 import com.hotel.evergreenkuakata.presentation.GenericDialog
 import com.hotel.evergreenkuakata.presentation.booking.BookingActivity
 import com.hotel.evergreenkuakata.presentation.booking.BookingListActivity
+import com.hotel.evergreenkuakata.presentation.onboard.bottomsheets.RoomStatusListBottomSheet
+import com.hotel.evergreenkuakata.presentation.onboard.bottomsheets.RoomStatusViewType
 import com.hotel.evergreenkuakata.presentation.room.RoomActivity
 import com.hotel.evergreenkuakata.presentation.room.RoomListActivity
 import com.hotel.evergreenkuakata.utils.Constants
@@ -52,6 +55,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
     private val viewModel by viewModels<HomeViewModel>()
     private var languageMap = HashMap<String, String>()
     private lateinit var activityLauncher: ActivityResultLauncher<Intent>
+    private lateinit var roomStatusListBottomSheet: RoomStatusListBottomSheet
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -120,6 +124,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
 
         activityMainBinding.bookingList.setOnClickListener {
             activityLauncher.launch(Intent(this, BookingListActivity::class.java))
+        }
+
+        activityMainBinding.tvBookedRooms.setOnClickListener {
+            showRoomStatusBottomSheet(viewModel.getBookedRoomList(), RoomStatusViewType.BOOKED)
+        }
+
+        activityMainBinding.tvAvailableRooms.setOnClickListener {
+            showRoomStatusBottomSheet(viewModel.getAvailableRoomList(), RoomStatusViewType.AVAILABLE)
         }
     }
 
@@ -244,4 +256,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
         finishAffinity()
     }
 
+    private fun showRoomStatusBottomSheet(
+        roomList: List<Room>,
+        roomStatusViewType: RoomStatusViewType
+    ) {
+        roomStatusListBottomSheet =
+            RoomStatusListBottomSheet.newInstance(
+                roomList = roomList as ArrayList<Room>,
+                roomStatusViewType
+            )
+        roomStatusListBottomSheet.show(supportFragmentManager, "RoomStatusListBottomSheet")
+    }
 }

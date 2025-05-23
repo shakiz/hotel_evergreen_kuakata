@@ -3,6 +3,7 @@ package com.hotel.evergreenkuakata.presentation.booking
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
@@ -126,6 +127,15 @@ class BookingListActivity : BaseActivity<ActivityBookingListBinding>(), BookingA
                     filterList(query.toString().lowercase(), originalList) { room, q ->
                         room.customerName.lowercase().contains(q, ignoreCase = true)
                     }
+                if (filteredList.isNotEmpty()) {
+                    activityBinding.mRecyclerView.visibility = View.VISIBLE
+                    activityBinding.noDataLayout.root.visibility =
+                        View.GONE
+                } else {
+                    activityBinding.mRecyclerView.visibility = View.GONE
+                    activityBinding.noDataLayout.root.visibility =
+                        View.VISIBLE
+                }
                 bookingAdapter.setItems(filteredList)
             }
             .launchIn(coroutineScope)

@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
@@ -118,5 +119,24 @@ class HomeViewModel @Inject constructor(
 
     fun logout() {
         authRepoImpl.logoutUser()
+    }
+
+    fun getAvailableRoomList(): ArrayList<Room>{
+        val roomList = ArrayList<Room>()
+        roomsWithAvailability.value.map {
+            roomList.add(it.room)
+        }
+        return roomList
+    }
+
+    fun getBookedRoomList(): ArrayList<Room>{
+        val roomList = ArrayList<Room>()
+        bookingsForDate.value.map {
+            roomList.add(Room(
+                roomId = it.roomId,
+                name = it.roomName,
+            ))
+        }
+        return roomList
     }
 }

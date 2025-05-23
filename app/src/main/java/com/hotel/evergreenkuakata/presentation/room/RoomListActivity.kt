@@ -3,6 +3,7 @@ package com.hotel.evergreenkuakata.presentation.room
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
@@ -148,6 +149,15 @@ class RoomListActivity : BaseActivity<ActivityRoomListBinding>(), RoomAdapter.Ro
                         room.name.lowercase().contains(q, ignoreCase = true)
                     }
 
+                if (filteredList.isNotEmpty()) {
+                    activityBinding.mRecyclerView.visibility = View.VISIBLE
+                    activityBinding.noDataLayout.root.visibility =
+                        View.GONE
+                } else {
+                    activityBinding.mRecyclerView.visibility = View.GONE
+                    activityBinding.noDataLayout.root.visibility =
+                        View.VISIBLE
+                }
                 roomAdapter.setItems(filteredList)
             }
             .launchIn(coroutineScope)
