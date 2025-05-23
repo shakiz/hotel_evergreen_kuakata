@@ -273,7 +273,6 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                 launch {
                     viewModel.bookingStatus.collect { bookingStatus ->
                         if (bookingStatus?.isSuccess.orFalse()) {
-                            ux.removeLoadingView()
                             doPopupForSuccess()
                             clearAllUiData()
                         }
@@ -283,13 +282,22 @@ class BookingActivity : BaseActivity<ActivityBookingBinding>() {
                 launch {
                     viewModel.updateBookingStatus.collect { bookingStatus ->
                         if (bookingStatus?.isSuccess.orFalse()) {
-                            ux.removeLoadingView()
                             Toast.makeText(
                                 this@BookingActivity,
                                 getString(R.string.updated_successfully),
                                 Toast.LENGTH_LONG
                             ).show()
                             finish()
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.isLoading.collect{
+                        if(it){
+                            ux.getLoadingView()
+                        }else{
+                            ux.removeLoadingView()
                         }
                     }
                 }

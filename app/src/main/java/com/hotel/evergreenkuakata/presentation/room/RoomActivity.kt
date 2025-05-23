@@ -175,7 +175,6 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
                 launch {
                     viewModel.addRoomStatus.collect { roomStatus ->
                         if (roomStatus?.isSuccess.orFalse()) {
-                            ux.removeLoadingView()
                             doPopupForSuccess()
                             clearAllUiData()
                         }
@@ -185,13 +184,22 @@ class RoomActivity : BaseActivity<ActivityRoomBinding>() {
                 launch {
                     viewModel.updateRoomStatus.collect { roomStatus ->
                         if (roomStatus?.isSuccess.orFalse()) {
-                            ux.removeLoadingView()
                             Toast.makeText(
                                 this@RoomActivity,
                                 getString(R.string.updated_successfully),
                                 Toast.LENGTH_LONG
                             ).show()
                             finish()
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.isLoading.collect{
+                        if(it){
+                            ux.getLoadingView()
+                        }else{
+                            ux.removeLoadingView()
                         }
                     }
                 }

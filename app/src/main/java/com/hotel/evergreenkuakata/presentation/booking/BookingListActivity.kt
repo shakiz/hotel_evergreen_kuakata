@@ -12,7 +12,9 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotel.evergreenkuakata.BaseActivity
 import com.hotel.evergreenkuakata.R
@@ -21,6 +23,7 @@ import com.hotel.evergreenkuakata.databinding.ActivityBookingListBinding
 import com.hotel.evergreenkuakata.presentation.adapter.BookingAdapter
 import com.hotel.evergreenkuakata.utils.SpinnerData
 import com.hotel.evergreenkuakata.utils.Tools
+import com.hotel.evergreenkuakata.utils.UX
 import com.hotel.evergreenkuakata.utils.filterList
 import com.hotel.evergreenkuakata.utils.textChanges
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +44,7 @@ class BookingListActivity : BaseActivity<ActivityBookingListBinding>(), BookingA
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     @Inject
     lateinit var tools: Tools
+    private lateinit var ux: UX
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -70,6 +74,7 @@ class BookingListActivity : BaseActivity<ActivityBookingListBinding>(), BookingA
 
     private fun initVariables() {
         spinnerData = SpinnerData(this)
+        ux = UX(this)
     }
 
     private fun bindUiWithComponents(){
@@ -105,8 +110,22 @@ class BookingListActivity : BaseActivity<ActivityBookingListBinding>(), BookingA
 
     private fun initObservers() {
         lifecycleScope.launch {
-            viewModel.allBookings.collect { bookings ->
-                bookingAdapter.setItems(bookings)
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                launch {
+                    viewModel.allBookings.collect { bookings ->
+                        bookingAdapter.setItems(bookings)
+                    }
+                }
+
+                launch {
+                    viewModel.isLoading.collect{
+                        if(it){
+                            ux.getLoadingView()
+                        }else{
+                            ux.removeLoadingView()
+                        }
+                    }
+                }
             }
         }
     }

@@ -23,6 +23,8 @@ class HomeViewModel @Inject constructor(
     private val bookingRepositoryImpl: BookingRepositoryImpl,
     private val roomRepositoryImpl: RoomRepositoryImpl,
 ) : ViewModel() {
+    private val _loading = MutableStateFlow<Boolean>(false)
+    val isLoading: StateFlow<Boolean> = _loading
 
     private val _allRooms = MutableStateFlow<List<Room>>(emptyList())
     val allRooms: StateFlow<List<Room>> = _allRooms
@@ -52,10 +54,13 @@ class HomeViewModel @Inject constructor(
 
     fun fetchAllRooms() {
         viewModelScope.launch {
+            _loading.value = true
             val result = roomRepositoryImpl.getAllRooms()
             result.onSuccess {
+                _loading.value = false
                 _allRooms.value = it
             }.onFailure {
+                _loading.value = false
                 _allRooms.value = emptyList()
             }
         }
@@ -63,6 +68,7 @@ class HomeViewModel @Inject constructor(
 
     fun fetchAllBookings() {
         viewModelScope.launch {
+            _loading.value = true
             val result = bookingRepositoryImpl.getAllBookings()
             result.onSuccess {
                 _allBookings.value = it
@@ -100,7 +106,9 @@ class HomeViewModel @Inject constructor(
                     .filter { booking -> booking.createdAt >= startOfMonth }
                     .sumOf { booking -> booking.pricePerNight }
                 _incomeData.value = IncomeInfo(thisMonth = monthTotal, today = todayTotal)
+                _loading.value = false
             }.onFailure {
+                _loading.value = false
                 _allBookings.value = emptyList()
             }
         }
@@ -108,10 +116,13 @@ class HomeViewModel @Inject constructor(
 
     fun fetchBookingsForDate(date: String) {
         viewModelScope.launch {
+            _loading.value = true
             val result = bookingRepositoryImpl.getBookingsForDate(date)
             result.onSuccess {
                 _bookingsForDate.value = it
+                _loading.value = false
             }.onFailure {
+                _loading.value = false
                 _bookingsForDate.value = emptyList()
             }
         }

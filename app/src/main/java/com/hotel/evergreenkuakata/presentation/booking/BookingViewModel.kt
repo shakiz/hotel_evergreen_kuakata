@@ -19,6 +19,9 @@ class BookingViewModel @Inject constructor(
     private val roomRepository: RoomRepositoryImpl
 ) : ViewModel() {
 
+    private val _loading = MutableStateFlow<Boolean>(false)
+    val isLoading: StateFlow<Boolean> = _loading
+
     private val _allBookings = MutableStateFlow<List<BookingInfo>>(emptyList())
     val allBookings: StateFlow<List<BookingInfo>> = _allBookings
 
@@ -39,10 +42,13 @@ class BookingViewModel @Inject constructor(
 
     fun fetchAllBookings() {
         viewModelScope.launch {
+            _loading.value = true
             val result = bookingRepository.getAllBookings()
             result.onSuccess {
                 _allBookings.value = it
+                _loading.value = false
             }.onFailure {
+                _loading.value = false
                 _allBookings.value = emptyList()
             }
         }
@@ -50,10 +56,13 @@ class BookingViewModel @Inject constructor(
 
     fun fetchAllUsers() {
         viewModelScope.launch {
+            _loading.value = true
             val result = bookingRepository.getAllUsers()
             result.onSuccess {
                 _allUsers.value = it
+                _loading.value = false
             }.onFailure {
+                _loading.value = false
                 _allUsers.value = emptyList()
             }
         }
@@ -61,10 +70,13 @@ class BookingViewModel @Inject constructor(
 
     fun fetchRoomsWithAvailability(date: String) {
         viewModelScope.launch {
+            _loading.value = true
             val result = roomRepository.getRoomsWithAvailability(date)
             result.onSuccess {
+                _loading.value = false
                 _roomsWithAvailability.value = it
             }.onFailure {
+                _loading.value = false
                 _roomsWithAvailability.value = emptyList() // or handle error appropriately
             }
         }
@@ -72,17 +84,22 @@ class BookingViewModel @Inject constructor(
 
     fun bookRoom(booking: BookingInfo) {
         viewModelScope.launch {
+            _loading.value = true
             val result = bookingRepository.bookRoom(booking)
             _bookingStatus.value = result
+            _loading.value = false
         }
     }
 
     fun fetchBookingsForDate(date: String) {
         viewModelScope.launch {
+            _loading.value = true
             val result = bookingRepository.getBookingsForDate(date)
             result.onSuccess {
                 _bookingsForDate.value = it
+                _loading.value = false
             }.onFailure {
+                _loading.value = false
                 _bookingsForDate.value = emptyList()
             }
         }
@@ -90,15 +107,19 @@ class BookingViewModel @Inject constructor(
 
     fun updateBooking(booking: BookingInfo) {
         viewModelScope.launch {
+            _loading.value = true
             val result = bookingRepository.updateBooking(booking)
             _updateBookingStatus.value = result
+            _loading.value = false
         }
     }
 
     fun deleteBooking(bookingId: String) {
         viewModelScope.launch {
+            _loading.value = true
             bookingRepository.deleteBooking(bookingId)
             fetchAllBookings()
+            _loading.value = false
         }
     }
 

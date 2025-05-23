@@ -160,6 +160,16 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), LanguageCallBack {
                             getString(R.string.this_month_x, incomeInfo.thisMonth)
                     }
                 }
+
+                launch {
+                    viewModel.isLoading.collect{
+                        if(it){
+                            ux.getLoadingView()
+                        }else{
+                            ux.removeLoadingView()
+                        }
+                    }
+                }
             }
         }
     }
